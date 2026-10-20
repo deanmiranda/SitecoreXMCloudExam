@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GraphQL Lab · XM Cloud</title><style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--bg:#f4f5f1;--paper:#fff;--ink:#172e29;--muted:#62726b;--line:#dfe5de;--green:#247e59;--lime:#d6ed8b;--red:#df5d56}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px 'DM Sans',sans-serif}button,a{touch-action:manipulation}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #448bc5;outline-offset:3px}header{height:92px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#fafbf7}.brand{color:var(--ink);text-decoration:none;display:flex;gap:13px;align-items:center;font:24px 'Space Grotesk',sans-serif}.brand small{display:block;font:9px 'DM Sans',sans-serif;letter-spacing:2.2px;margin-top:4px}.logo{background:var(--ink);color:var(--lime);border-radius:12px;padding:10px;font-size:26px}.logo span{font-size:16px}.header-note{color:var(--muted);display:flex;align-items:center;gap:14px}.dot,.live-dot{display:inline-block;background:var(--green);border-radius:50%;width:7px;height:7px}.live-dot{background:var(--lime);margin-right:7px}main{max-width:1360px;margin:auto;padding:42px 5%}.intro{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;gap:24px}.eyebrow,.section-label{font-size:10px;font-weight:700;letter-spacing:1.8px}.eyebrow{color:var(--green)}h1{font:500 clamp(32px,4vw,48px)/1.12 'Space Grotesk',sans-serif;letter-spacing:-2px;margin:14px 0}h1 span{color:var(--green)}.intro p{color:var(--muted);line-height:1.7}.journey{width:255px;padding:24px;border:1px solid #d5dfcc;border-radius:16px;background:#edf1e4}.journey strong{font:42px 'Space Grotesk',sans-serif;display:block;margin:10px 0}.journey>span:not(.eyebrow),.journey small{color:var(--muted);font-size:12px}.mini-track{height:5px;border-radius:8px;background:#d7dfce;margin:15px 0 10px}.mini-track i{height:100%;display:block;background:var(--green);border-radius:8px}#levels{display:flex;gap:8px;border-bottom:1px solid var(--line);padding-bottom:19px;margin-bottom:26px}#levels button{border:1px solid var(--line);border-radius:30px;background:transparent;padding:11px 20px;color:var(--muted)}#levels button.active{background:var(--ink);color:#fff;border-color:var(--ink)}#levels button span{opacity:.65;margin-right:9px}.workspace{display:grid;grid-template-columns:245px minmax(0,1fr);gap:36px}.section-label{display:flex;justify-content:space-between;margin:8px 0 18px;color:var(--muted)}#lessonList{display:grid;gap:7px}.lesson{display:flex;align-items:center;gap:12px;background:transparent;border:1px solid transparent;text-align:left;padding:13px 10px;border-radius:10px;color:#52665d;width:100%;font-size:13px}.lesson.active{background:#e4ebd9;border-color:#d3ddc7;color:var(--ink);font-weight:700}.lesson .number{font:12px monospace;display:grid;place-items:center;flex:none;width:27px;height:27px;border:1px solid #ccd7c7;border-radius:8px}.lesson.solved .number{background:var(--green);color:white}.reference{margin-top:28px;padding:18px 4px;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:var(--muted)}summary{cursor:pointer;font-weight:600}a{color:var(--green)}.mission h2{font:500 30px 'Space Grotesk',sans-serif;margin:10px 0}.mission>p{line-height:1.65;color:#42584f}.concept{border-left:3px solid #acc881;padding:9px 14px;font-size:13px;line-height:1.6;background:#ecf0e6}.meter-card{background:white;border:1px solid var(--line);padding:20px;border-radius:13px;margin:23px 0}.meter-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted)}.meter-top strong{font:700 24px 'Space Grotesk',sans-serif;color:var(--green);margin-left:10px}#meter{position:relative;display:flex;background:#edf0eb;height:14px;border-radius:5px;margin-top:16px}#meter i{height:100%;transition:width .2s}#green{background:var(--green);border-radius:5px 0 0 5px}#wrong{background:#e9b753}#overflow{background:var(--red)}.target{position:absolute;left:66.666%;top:-5px;bottom:-5px;border-left:2px dashed #617469}.ticks{position:relative;display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:9px}.ticks span:nth-child(2){position:absolute;left:66.666%;transform:translateX(-50%)}#feedback{margin-top:14px;font-size:12px;color:var(--muted)}.builder{background:#172d29;color:#e3eade;border-radius:13px;overflow:hidden;box-shadow:0 8px 22px #182b290a}.pane-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;font-size:10px;font-weight:700;letter-spacing:1.5px}.builder .pane-head{border-bottom:1px solid #34453e}.pane-head button,.query-actions button{border:0;background:transparent;color:inherit;font-size:11px;letter-spacing:0;padding:6px}.instructions{font-size:11px;color:#9fb4a9;margin:12px 20px}.code-scroll{overflow:auto;padding:2px 22px 18px}pre{font:13px/2.8 Consolas,'Courier New',monospace;margin:0;tab-size:2}.slot{display:inline-block;font:inherit;line-height:1.6;padding:4px 12px;min-width:80px;border:1px dashed #789284;color:#c6d5ce;border-radius:5px;background:#223d34}.slot.selected{outline:2px solid var(--lime);outline-offset:2px}.slot.correct{background:#264f3b;color:#dcf3a5;border:1px solid #648457}.slot.incorrect{background:#624b2a;border:1px solid #bf9250;color:#ffe5ad}.query-actions{display:flex;justify-content:space-between;border-top:1px solid #34453e;padding:8px 16px}.builder details{padding:15px 20px;background:#203831;font-size:12px}.builder details pre{line-height:1.7;margin-top:12px}.extra{margin:5px;border:1px solid #e08b80;background:#643b35;color:#ffe2d9;border-radius:5px;padding:6px 10px;font-family:monospace}#extras:not(:empty){padding:12px;border-top:1px solid #735147}#extras small{display:block;margin:0 8px;color:#eab3a7}.bank{margin-top:18px;background:white;border:1px solid var(--line);border-radius:13px;padding-bottom:18px}.bank .pane-head{padding-bottom:0}.bank .instructions{color:var(--muted)}#chunks{display:flex;flex-wrap:wrap;gap:9px;padding:0 20px}.chunk{border:1px solid #d5ddd1;border-radius:7px;background:#f7f8f3;padding:9px 13px;font:12px Consolas,monospace;color:#365148}.chunk:hover{border-color:var(--green);background:#edf3e2}#extraMode[aria-pressed=true]{color:#b34035;background:#ffece6;border-radius:6px}.actions{display:flex;gap:10px;margin:20px 0}.actions button{border:1px solid #cdd8c8;border-radius:8px;padding:11px 15px;background:transparent;font-size:12px;color:var(--ink)}.actions .primary{margin-left:auto;background:var(--ink);color:white;border-color:var(--ink)}#message:not(:empty){padding:15px 18px;border-radius:10px;background:#e3edce;line-height:1.7;font-size:13px;margin-bottom:16px}.explanation{font-size:13px;padding:19px;border:1px solid var(--line);border-radius:10px;background:#fff;line-height:1.7}footer{margin:50px 0 0;padding-top:25px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);line-height:1.7}footer strong{font-family:'Space Grotesk',sans-serif;font-size:16px;color:var(--ink)}footer p{max-width:850px}button:hover{filter:brightness(.96)}@media(max-width:900px){.workspace{grid-template-columns:190px minmax(0,1fr);gap:20px}main{padding:30px 4%}}@media(max-width:680px){header{height:75px}.header-note{display:none}.intro{align-items:flex-start}.journey{width:140px;padding:15px}.journey strong{font-size:28px}.journey .eyebrow{font-size:8px}.intro p{font-size:12px}.workspace{display:block}aside{margin-bottom:24px}#lessonList{display:flex;overflow-x:auto;padding-bottom:7px}.lesson{width:auto;flex:none}.reference{margin:8px 0;padding:8px}#levels button{padding:10px 13px;font-size:12px}.mission h2{font-size:26px}.actions{flex-wrap:wrap}.actions .primary{margin-left:0}.meter-top{font-size:10px}.pane-head{padding:15px}.intro{gap:12px}h1{font-size:32px}pre{font-size:12px}#chunks{padding:0 15px}}
+</style></head>
+<body>
+<header><a class="brand" href="./"><span class="logo">G<span>↗</span></span><span>GraphQL <b>Lab</b><small>SITECORE XM CLOUD</small></span></a><div class="header-note">Learn by building.<span class="dot"></span></div></header>
+<main>
+<section class="intro"><div><div class="eyebrow">YOUR HANDS-ON QUERY PLAYGROUND</div><h1>Small chunks.<br><span>Big understanding.</span></h1><p>Build real query patterns, one piece at a time.<br>Start with the basics. Work your way to Experience Edge.</p></div><div class="journey"><span class="eyebrow">YOUR PROGRESS</span><strong id="progress">0 / 18</strong><span>challenges solved independently</span><div class="mini-track"><i id="progressbar"></i></div><small>Saved on this browser</small></div></section>
+<nav id="levels" aria-label="Difficulty"></nav>
+<div class="workspace">
+<aside><div class="section-label">LEARNING PATH <span id="levelCount"></span></div><div id="lessonList"></div><details class="reference"><summary>Before you query</summary><p>Delivery reads content published to Experience Edge. Preview reads authoring content for development and editing workflows. Endpoints, schema, and credentials must match the environment.</p><p>Delivery GraphQL is read-only. Mutations are not how you edit or publish Sitecore content.</p><p>A response can contain both data and errors. Check errors, nulls, language, item paths, and publishing when debugging.</p><p>Use the endpoint’s schema explorer. Never assume custom template type names or field names.</p><a href="https://doc.sitecore.com/xmc/en/developers/xm-cloud/set-up-the-graphql-playgrounds-to-test-content.html" target="_blank" rel="noopener">Sitecore API setup ↗</a></details></aside>
+<section class="exercise">
+<div class="mission"><div class="eyebrow" id="challengeLabel"></div><h2 id="title"></h2><p id="request"></p><div class="concept" id="concept"></div></div>
+<div class="meter-card"><div class="meter-top"><span>QUERY MATCH <strong id="score">0%</strong></span><span id="chunkCount"></span></div><div class="meter-wrap"><div id="meter" role="img" aria-label="Query progress"><i id="green"></i><i id="wrong"></i><i id="overflow"></i><span class="target"></span></div><div class="ticks"><span>0%</span><span>100% target</span><span id="capacity">150%</span></div></div><div id="feedback" role="status" aria-live="polite"></div></div>
+<div class="builder"><div class="pane-head"><span><span class="live-dot"></span> QUERY BUILDER</span><button id="clear">Clear query</button></div><p class="instructions">1. Choose a gap. &nbsp; 2. Click a chunk. &nbsp; Click a filled gap to swap it.</p><div class="code-scroll"><pre id="query"></pre></div><div id="extras"></div><div class="query-actions"><button id="remove">Remove selected chunk</button><button id="copy">Copy query</button></div><details id="variablesPanel"><summary>Request variables · JSON</summary><pre id="variables"></pre></details></div>
+<div class="bank"><div class="pane-head"><span>CODE CHUNKS</span><button id="extraMode" aria-pressed="false">+ Add as extra</button></div><p class="instructions">Some chunks are distractors. Chunks can be reused.</p><div id="chunks"></div></div>
+<div class="actions"><button id="hint">Give me a hint</button><button id="solution">Show solution</button><button id="next" class="primary">Next challenge →</button></div>
+<div id="message" role="status"></div>
+<details class="explanation" id="explanation"><summary>Why this query works</summary><p id="why"></p><a id="source" target="_blank" rel="noopener">Read the documentation ↗</a></details>
+</section></div>
+<footer><strong>Practice, understand, repeat.</strong><p>Independent study aid, not an official Sitecore exam or a guarantee of exam coverage. Queries are assembled locally; no Sitecore connection is made. Paths, IDs, and custom template fields are illustrative. Score measures the requested chunks in their labeled gaps, not every semantically equivalent GraphQL query.</p><span>18 challenges · 3 skill levels · Based on Sitecore and GraphQL documentation</span></footer>
+</main><script>const docs = {
+  examples: 'https://doc.sitecore.com/xp/en/developers/hd/22/sitecore-headless-development/query-examples-for-the-delivery-api.html',
+  schema: 'https://doc.sitecore.com/sai/en/developers/sitecoreai/experience-edge/experience-edge-apis/the-experience-edge-schema.html',
+  preview: 'https://doc.sitecore.com/xmc/en/developers/xm-cloud/set-up-the-graphql-playgrounds-to-test-content.html',
+  graphql: 'https://graphql.org/learn/queries/'
+};
+// Each gap has an exact, task-specific target; punctuation and nesting are supplied.
+const lessons = [];
+function lesson(level,title,request,concept,template,answers,wrong,explanation,variables=null,source='examples'){
+  lessons.push({level,title,request,concept,template,answers,wrong,explanation,variables,source});
+}
+lesson(0,'Hello, content','Read the English home item at /sitecore/content/Acme/Home. Return only its name.',
+'A query reads data. Arguments identify the item; the selection set specifies what comes back.',
+'§ {\n  §(path: §, language: "en") {\n    §\n  }\n}',
+['query','item','"/sitecore/content/Acme/Home"','name'],
+['mutation','layout','"/"','title'],
+'item accepts a content-tree path or an item GUID. name is a scalar: it does not need nested braces. Experience Edge delivery is read-only.',null,'schema');
+lesson(0,'Choose your fields','Read the English home item. Return its ID, display name, and content-tree path, in the marked gaps.',
+'GraphQL returns the fields you select. A display name is not necessarily the same as the underlying item name.',
+'query {\n  item(path: "/sitecore/content/Acme/Home", language: "en") {\n    §\n    §\n    §\n  }\n}',
+['id','displayName','path'],['itemId','display_name','routePath'],
+'The gaps are ID, display name, then path. This game uses those positions for feedback; GraphQL itself allows sibling fields in any order.',null,'schema');
+lesson(0,'Open a field','Read the Title field on the English home item and return its raw value.',
+'Sitecore content fields are objects. Select a property inside the field rather than treating it as a scalar.',
+'query {\n  item(path: "/sitecore/content/Acme/Home", language: "en") {\n    §(name: §) {\n      §\n    }\n  }\n}',
+['field','"Title"','value'],['fields','Title','rendered'],
+'field(name: "Title") selects the named content field; value reads its raw value. The field must exist in your content template.');
+lesson(0,'Speak another language','Read the French home item and return its displayName.',
+'The language argument selects the content language. It is a quoted string, not an enum.',
+'query {\n  §(path: "/sitecore/content/Acme/Home", §: §) {\n    displayName\n  }\n}',
+['item','language','"fr"'],['layout','locale','fr'],
+'Use language: "fr". A syntactically correct query does not guarantee that a French published item exists; publishing and fallback settings still matter.',null,'preview');
+lesson(0,'Give it a name','Create a named read operation called HomeSummary, and alias displayName to label.',
+'An operation name identifies the query for tooling. An alias changes a response key without changing the underlying field.',
+'§ § {\n  item(path: "/sitecore/content/Acme/Home", language: "en") {\n    §: §\n  }\n}',
+['query','HomeSummary','label','displayName'],['mutation','"HomeSummary"','display_name'],
+'query HomeSummary names the operation. label: displayName returns the displayName value under the response key label.',null,'graphql');
+lesson(0,'Render the home page','Retrieve layout JSON for site acme, route /, and language en.',
+'A content-tree path identifies an item; a route path identifies a page URL within a site.',
+'query {\n  §(site: "acme", §: "/", language: "en") {\n    § {\n      §\n    }\n  }\n}',
+['layout','routePath','item','rendered'],['item(path: "/")','path','results','jsonValue'],
+'layout resolves the route. item.rendered contains the layout payload used by a rendering application, including component and placeholder information.');
+lesson(1,'Make it reusable','Declare required String variables path and language, then use them to read an item name.',
+'$ introduces a variable. String! means a non-null string is required. Variable values travel separately as JSON.',
+'query ReadItem($path: §, $language: §) {\n  item(path: §, language: §) {\n    name\n  }\n}',
+['String!','String!','$path','$language'],['String','"$path"','"$language"','Int!'],
+'Both declarations are required strings. "$path" would be literal text, not a variable. Repeated String! chunks are interchangeable.',
+{path:'/sitecore/content/Acme/Home',language:'en'},'graphql');
+lesson(1,'Two items, one request','Use home and settings as aliases to retrieve two different items in the same operation.',
+'When the same field has different arguments, aliases keep the response keys distinct.',
+'query {\n  §: item(path: "/sitecore/content/Acme/Home", language: "en") { name }\n  §: item(path: "/sitecore/content/Acme/Settings", language: "en") { name }\n}',
+['home','settings'],['item','"home"','"settings"'],
+'The response has data.home and data.settings. Aliases also avoid a field conflict caused by calling item twice with different paths.',null,'graphql');
+lesson(1,'Fields for components','Get the HeroImage field in the format suitable for a Sitecore SDK field component.',
+'SDK field components use structured field data, especially for images and links.',
+'query {\n  item(path: "/sitecore/content/Acme/Home", language: "en") {\n    §(name: §) {\n      §\n    }\n  }\n}',
+['field','"HeroImage"','jsonValue'],['"hero-image"','value','rendered'],
+'jsonValue returns SDK-compatible field data. Raw value and layout rendered serve different purposes. Assume HeroImage exists on this item.');
+lesson(1,'Find direct children','Search for items whose immediate parent ID is AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA. Return their names.',
+'search filters indexed properties. _parent matches an immediate parent; _path is used for an ancestor scope.',
+'query {\n  search(where: { name: §, value: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", operator: § }) {\n    § {\n      name\n    }\n  }\n}',
+['"_parent"','EQ','results'],['"_path"','CONTAINS','items'],
+'_parent with EQ targets direct children. search returns a result wrapper, so select fields inside results. IDs in this game are illustrative.',null,'schema');
+lesson(1,'Narrow the results','Find English items based on template BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB. Both conditions must match. Return total and item names.',
+'AND requires every predicate to match. _templates contains template IDs, including inherited base templates.',
+'query {\n  search(where: { §: [\n    { name: §, value: "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB", operator: § }\n    { name: "_language", value: "en", operator: § }\n  ] }) {\n    total\n    results { name }\n  }\n}',
+['AND','"_templates"','CONTAINS','EQ'],['OR','"_template"','NCONTAINS'],
+'Use AND to combine the template and language predicates. CONTAINS checks membership in _templates; EQ matches the language.',null,'schema');
+lesson(1,'First page of results','Get the first five items named Article. Include total, names, and the cursor metadata needed to continue.',
+'Pagination metadata tells the client whether another page exists and where to continue.',
+'query {\n  search(where: { name: "_name", value: "Article", operator: EQ }, §: 5) {\n    total\n    results { name }\n    § {\n      §\n      §\n    }\n  }\n}',
+['first','pageInfo','endCursor','hasNext'],['limit','pagination','cursor','hasNextPage'],
+'Experience Edge uses first and pageInfo { endCursor hasNext }. hasNextPage is common in other GraphQL APIs but is not the property used here.');
+lesson(2,'Continue with a cursor','Build the next-page query with the supplied variables. Select names and both pagination fields.',
+'A cursor is opaque: pass the previous endCursor to after. Do not invent, increment, or decode cursors.',
+'query More($where: ItemSearchPredicateInput!, $count: Int!, $cursor: String) {\n  search(where: §, first: §, §: §) {\n    results { name }\n    pageInfo { endCursor § }\n  }\n}',
+['$where','$count','after','$cursor','hasNext'],['before','"$cursor"','hasNextPage','offset'],
+'The optional String cursor can be null for the first page. Continue while hasNext is true, using each response’s endCursor. Confirm input types against your endpoint schema.',
+{where:{name:'_language',value:'en',operator:'EQ'},count:5,cursor:null});
+lesson(2,'Project a template type','Assume the published schema includes an Article template type with a headline field. Read headline.value via an inline fragment.',
+'Template projection exposes typed fields. Only select type-specific fields within the matching fragment.',
+'query {\n  item(path: "/sitecore/content/Acme/Home/News/Launch", language: "en") {\n    § § {\n      § { § }\n    }\n  }\n}',
+['... on','Article','headline','value'],['...','"Article"','Title','rendered'],
+'... on Article conditionally selects fields for that type. Projected type and field names depend on your templates and naming collisions; inspect the schema.',null,'schema');
+lesson(2,'Reuse a selection','Define a fragment called ItemLink on Item. Use it for the home item and its direct children.',
+'A named fragment keeps repeated field selections consistent. A fragment spread starts with three dots.',
+'fragment ItemLink on § {\n  displayName\n  url { path }\n}\nquery {\n  item(path: "/sitecore/content/Acme/Home", language: "en") {\n    §\n    children {\n      § {\n        §\n      }\n    }\n  }\n}',
+['Item','...ItemLink','results','...ItemLink'],['item','ItemLink','items','... on ItemLink'],
+'The ItemLink fragment is shared by the parent and children.results. This requests one child page; production navigation may need pagination.');
+lesson(2,'Build a breadcrumb','Read the current item and its ancestors that have layout. Use displayName and url.path for each ancestor.',
+'Traversing item relationships can replace separate round trips. Ancestors are a list, unlike children’s results wrapper.',
+'query {\n  item(path: "/sitecore/content/Acme/Home/News/Launch", language: "en") {\n    displayName\n    §(§: §) {\n      displayName\n      § { § }\n    }\n  }\n}',
+['ancestors','hasLayout','true','url','path'],['parent','"true"','rendered','routePath'],
+'ancestors(hasLayout: true) selects ancestor items with presentation details. It returns items directly; there is no results wrapper here.');
+lesson(2,'Compose a listing','Find English pages in the subtree of AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA with layout. Return total and names. Use all three filters.',
+'A listing often combines scope, language, and page eligibility. _path includes the root itself as well as descendants.',
+'query {\n  search(where: { §: [\n    { name: §, value: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", operator: § }\n    { name: "_language", value: "en", operator: EQ }\n    { name: §, value: §, operator: EQ }\n  ] }, first: 10) {\n    total\n    results { name }\n  }\n}',
+['AND','"_path"','CONTAINS','"_hasLayout"','"true"'],['OR','"_parent"','true','"_layout"'],
+'Search predicate values are strings, including "true". This differs from Boolean arguments such as hasLayout: true. This query retrieves only the first ten matches.',null,'schema');
+lesson(2,'Route discovery','List English routes for the acme site, returning each route path and ID, total, and pagination metadata.',
+'Route discovery supports generating page paths. This exercise assumes an endpoint exposing site.siteInfo.routes.',
+'query {\n  § {\n    §(site: "acme") {\n      §(language: "en") {\n        results {\n          §\n          route { § }\n        }\n        total\n        pageInfo { endCursor hasNext }\n      }\n    }\n  }\n}',
+['site','siteInfo','routes','routePath','id'],['layout','item','children','path','itemId'],
+'Use the site entry point for site route information. Inspect your schema for availability and use first/after for subsequent route pages. This is not a query for arbitrary content-tree roots.');
+if(typeof module !== 'undefined') module.exports = {lessons,docs};
+</script><script>const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const levelNames=['Fundamentals','Intermediate','Expert'];
+let completed=[],revealed=[],current=0,level=0,slots=[],extras=[],selected=0,extraMode=false,assisted=false,bank=[],hintStep=0;
+try{const saved=JSON.parse(localStorage.getItem('xm-graphql-v1')||'{}');completed=Array.isArray(saved.completed)?saved.completed.filter(i=>Number.isInteger(i)&&lessons[i]):[];revealed=Array.isArray(saved.revealed)?saved.revealed.filter(i=>Number.isInteger(i)&&lessons[i]):[];current=Number.isInteger(saved.current)&&lessons[saved.current]?saved.current:0;}catch{}
+function save(){try{localStorage.setItem('xm-graphql-v1',JSON.stringify({completed,revealed,current}));}catch{}}
+function measure(answers,values,extra){const correct=values.filter((v,i)=>v===answers[i]).length;const filled=values.filter(v=>v!==null).length;return {correct,missing:values.length-filled,wrong:filled-correct,extra:extra.length,placed:filled+extra.length,total:answers.length,solved:correct===answers.length&&!extra.length};}
+function load(i){current=i;level=lessons[i].level;slots=lessons[i].answers.map(()=>null);extras=[];selected=0;extraMode=false;assisted=false;hintStep=0;bank=[...new Set([...lessons[i].answers,...lessons[i].wrong])];for(let j=bank.length-1;j>0;j--){let k=Math.floor(Math.random()*(j+1));[bank[j],bank[k]]=[bank[k],bank[j]];}
+  $('title').textContent=lessons[i].title;$('request').textContent=lessons[i].request;$('concept').textContent=lessons[i].concept;
+  $('challengeLabel').textContent=`${levelNames[level]} / CHALLENGE ${String(i+1).padStart(2,'0')}`;
+  $('why').textContent=lessons[i].explanation;$('source').href=docs[lessons[i].source];$('explanation').open=false;$('message').textContent='';
+  $('variablesPanel').hidden=!lessons[i].variables;$('variables').textContent=JSON.stringify(lessons[i].variables,null,2);
+  $('chunks').innerHTML=bank.map((v,j)=>`<button class="chunk" data-bank="${j}">${esc(v)}</button>`).join('');save();render();
+}
+function render(){
+ const l=lessons[current],m=measure(l.answers,slots,extras);
+ if(m.solved&&!assisted&&!completed.includes(current)){completed.push(current);save();$('message').textContent='✓ Query complete! All required chunks are in place with no extras. Read the explanation, then try the next challenge.';$('explanation').open=true;}
+ $('levels').innerHTML=levelNames.map((n,i)=>`<button class="${level===i?'active':''}" aria-pressed="${level===i}" data-level="${i}"><span>0${i+1}</span>${n}</button>`).join('');
+ $('lessonList').innerHTML=lessons.map((x,i)=>x.level===level?`<button class="lesson ${i===current?'active':''} ${completed.includes(i)?'solved':''}" ${i===current?'aria-current="step"':''} data-lesson="${i}"><span class="number">${completed.includes(i)?'✓':String(i%6+1).padStart(2,'0')}</span><span>${esc(x.title)}${revealed.includes(i)&&!completed.includes(i)?' · viewed':''}</span></button>`:'').join('');
+ $('levelCount').textContent=`${completed.filter(i=>lessons[i].level===level).length}/6`;
+ $('progress').textContent=`${completed.length} / ${lessons.length}`;$('progressbar').style.width=`${completed.length/lessons.length*100}%`;
+ let parts=l.template.split('§');$('query').innerHTML=parts.map((s,i)=>esc(s)+(i<slots.length?`<button class="slot ${selected===i?'selected':''} ${slots[i]===null?'':slots[i]===l.answers[i]?'correct':'incorrect'}" data-slot="${i}" aria-label="Gap ${i+1}: ${esc(slots[i]??'empty')}" aria-pressed="${selected===i}">${esc(slots[i]??`[ ${i+1} ]`)}</button>`:'')).join('');
+ $('extras').innerHTML=extras.length?'<small>Extra chunks — click to remove</small>'+extras.map((v,i)=>`<button class="extra" data-extra="${i}" aria-label="Remove extra ${esc(v)}">${esc(v)} ×</button>`).join(''):'';
+ const scale=Math.max(150,Math.ceil(m.placed/m.total*100/50)*50);$('green').style.width=`${m.correct/m.total*100/scale*100}%`;$('wrong').style.width=`${m.wrong/m.total*100/scale*100}%`;$('overflow').style.width=`${m.extra/m.total*100/scale*100}%`;
+ document.querySelector('.target').style.left=`${100/scale*100}%`;document.querySelector('.ticks span:nth-child(2)').style.left=`${100/scale*100}%`;$('capacity').textContent=`${scale}%`;
+ $('score').textContent=`${Math.round(m.correct/m.total*100)}%`;$('chunkCount').textContent=`${m.placed} / ${m.total} chunks · ${Math.round(m.placed/m.total*100)}% added`;
+ $('feedback').textContent=`${m.correct} correct · ${m.missing} missing · ${m.wrong} incorrect · ${m.extra} extra${m.placed>m.total?' — over the 100% target':''}`;
+ $('meter').setAttribute('aria-label',`${Math.round(m.correct/m.total*100)} percent correct; ${m.placed} of ${m.total} chunks added, ${m.extra} extra. Green is correct, amber is incorrect, red is extra.`);
+ $('extraMode').setAttribute('aria-pressed',String(extraMode));$('remove').disabled=selected===null||slots[selected]===null;
+ $('next').textContent=current===lessons.length-1?'Back to fundamentals ↺':'Next challenge →';
+}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.level!==undefined){const n=+b.dataset.level;load(lessons.findIndex(x=>x.level===n));}
+ if(b.dataset.lesson!==undefined)load(+b.dataset.lesson);
+ if(b.dataset.slot!==undefined){selected=+b.dataset.slot;extraMode=false;render();}
+ if(b.dataset.bank!==undefined){const value=bank[+b.dataset.bank];if(extraMode||selected===null){extras.push(value);}else{slots[selected]=value;selected=slots.findIndex(v=>v===null);if(selected<0)selected=null;}$('message').textContent='';render();}
+ if(b.dataset.extra!==undefined){extras.splice(+b.dataset.extra,1);render();}
+});
+$('clear').onclick=()=>load(current);
+$('remove').onclick=()=>{if(selected!==null){slots[selected]=null;render();}};
+$('extraMode').onclick=()=>{extraMode=!extraMode;render();};
+$('next').onclick=()=>load((current+1)%lessons.length);
+$('hint').onclick=()=>{const i=slots.findIndex((v,j)=>v!==lessons[current].answers[j]);hintStep++;if(i<0){$('message').textContent=extras.length?'Your required chunks are correct. Remove the red extra chunks.':'All chunks are correct. You are ready for the next challenge.';}else{selected=i;$('message').textContent=hintStep===1?`Focus on gap ${i+1}. ${lessons[current].concept}`:`Gap ${i+1} needs ${lessons[current].answers[i]}. ${lessons[current].explanation}`;render();}};
+$('solution').onclick=()=>{assisted=true;if(!revealed.includes(current))revealed.push(current);slots=[...lessons[current].answers];extras=[];selected=null;$('message').textContent='Solution shown — this does not count as an independent solve. Read the explanation, then use Clear query to practice again.';$('explanation').open=true;save();render();};
+$('copy').onclick=async()=>{if(slots.some(v=>v===null)||extras.length){$('message').textContent='Fill every gap and remove extra chunks before copying.';return;}let i=0;const code=lessons[current].template.replace(/§/g,()=>slots[i++]);try{await navigator.clipboard.writeText(code);$('message').textContent='Query copied. Example paths and custom fields must be adapted to your Sitecore environment.';}catch{$('message').textContent='Clipboard unavailable here. Select and copy the query text from the builder.';}};
+load(current);
+</script></body></html>
+

@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#162b3c">
+<title>XM Cloud Developer • Practice Studio</title>
+<style>
+:root{--ink:#182d3d;--muted:#536775;--paper:#f5f6f8;--line:#dbe2e8;--accent:#cf4b32;--navy:#162b3c;--green:#176448;--red:#a53333;--amber:#8b560d}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button,a,input,select,summary{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.55}button,.button{border:1px solid var(--line);border-radius:9px;padding:10px 17px;background:white;color:var(--ink);font-weight:650;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}button:hover:not(:disabled),.button:hover{background:#edf2f5}button.primary{background:var(--accent);color:white;border-color:var(--accent)}button.primary:hover:not(:disabled){background:#af3d28}button.dark{background:var(--navy);color:white;border-color:var(--navy)}a{color:#146487;text-underline-offset:3px}a:hover{text-decoration-thickness:2px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #2782ba;outline-offset:3px}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(34px,4vw,54px);line-height:1.1;letter-spacing:-2px;margin-bottom:20px}h2{font-size:25px;line-height:1.35;letter-spacing:-.5px}h3{font-size:18px}p{margin-bottom:15px}.muted,small{color:var(--muted)}small{font-size:13px}.eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:750;color:var(--accent);margin-bottom:14px}.shell{max-width:1280px;margin:auto;padding:0 32px}.topbar{border-bottom:1px solid var(--line);background:white}.toprow{display:flex;align-items:center;justify-content:space-between;min-height:79px;gap:15px}.brand{display:flex;align-items:center;gap:12px;font-weight:750;font-size:17px;letter-spacing:-.4px}.brand-icon{width:36px;height:36px;background:var(--navy);color:white;display:grid;place-items:center;border-radius:10px;font:700 16px monospace}.topnote{font-size:12px;font-weight:650;color:var(--muted);border:1px solid var(--line);padding:5px 10px;border-radius:30px}.toplinks{display:flex;align-items:center;gap:12px}.textbtn{background:transparent;border:0;padding:6px;font-size:14px}.main{padding-top:35px;padding-bottom:55px}.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;padding:14px 0 32px}.lead{font-size:18px;max-width:650px;color:var(--muted)}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:23px}.pill{border-radius:20px;padding:4px 10px;background:#e8edf1;font-size:12px;font-weight:650}.hero-code{background:var(--navy);color:#dcebf4;border-radius:17px;padding:25px;box-shadow:0 14px 35px #162b3c12}.code-heading{display:flex;justify-content:space-between;font:12px system-ui;color:#a2b7c5;margin-bottom:20px}.hero-code pre{margin:0;background:none;padding:0;font-size:15px}.hero-code .note{font-size:12px;color:#a9c4d5;border-top:1px solid #ffffff24;padding-top:14px;margin-top:20px;margin-bottom:0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--line);margin-bottom:30px}.stat{background:white;padding:18px 22px}.stat strong{display:block;font-size:28px;letter-spacing:-1px}.stat span{font-size:13px;color:var(--muted)}.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:27px}.setup-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:24px}.control-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}label.control{font-size:13px;font-weight:700;display:block}select{display:block;width:100%;margin-top:7px;border:1px solid #c5d0d9;border-radius:8px;padding:11px;background:white;color:var(--ink)}.notice{background:#fff6e9;border:1px solid #e9d8b9;border-radius:9px;padding:13px 16px;font-size:13px;color:#6c512b;margin:17px 0}.resume{background:#e9f3f7;border:1px solid #b7d7e3;padding:18px;border-radius:10px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;gap:15px}.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.list-clean{list-style:none;padding:0;margin:0}.list-clean li{padding:9px 0;border-bottom:1px solid #edf0f3;font-size:14px}.list-clean li:last-child{border:0}.tiny-num{display:inline-block;font:12px monospace;color:var(--accent);width:30px}.scope-note{font-size:13px;margin-bottom:20px;color:var(--muted)}details{margin-top:18px}summary{cursor:pointer;font-weight:650}.sources{font-size:14px}.sources li{padding:4px 0}.section-title{display:flex;align-items:center;justify-content:space-between;gap:15px}.exam-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:27px;align-items:start}.sidebar{position:sticky;top:20px}.sidebar .panel{padding:20px}.session-meta{font-size:13px}.progress{height:7px;background:#e5ebef;border-radius:7px;overflow:hidden;margin:13px 0}.progress span{height:100%;display:block;background:var(--accent);transition:width .2s}.map{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:17px 0}.map button{padding:0;height:33px;border-radius:6px;font-size:12px;position:relative}.map button.nav-correct{background:#e5f2ec;border-color:#78b69a;color:#14573d}.map button.nav-incorrect{background:#fce9e9;border-color:#cf8181;color:#962c2c}.map button .nav-mark{position:absolute;right:2px;bottom:0;font-size:10px;line-height:12px;font-weight:800}.map button.current{outline:2px solid var(--ink);outline-offset:2px}.map button.flagged:after{content:"";position:absolute;right:2px;top:2px;width:6px;height:6px;border-radius:50%;background:#d58a0b}.legend{font-size:11px;color:var(--muted)}.timer{font:700 22px monospace;margin-top:14px}.timer.urgent{color:var(--red)}.question-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:20px}.question-card h2{font-size:23px}.question-card{padding:30px}.question-id{font-size:12px;color:var(--muted);margin-bottom:10px}.question-stem{outline:none}.code-block{background:#142b3d;color:#e1edf5;border-radius:10px;overflow:auto;padding:21px;font:14px/1.75 Consolas,"Courier New",monospace;tab-size:2;white-space:pre;margin:20px 0;max-height:520px}.tok-string{color:#b8dba8}.tok-var{color:#ffca8c}.tok-key{color:#8fd1f3}.tok-comment{color:#9aafbf}fieldset{border:0;margin:0;padding:0;min-width:0}legend{font-size:13px;font-weight:650;margin-bottom:13px}.options{display:grid;gap:11px}.option{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-radius:10px;padding:15px;cursor:pointer;line-height:1.5}.option:has(input:checked){background:#eff5fa;border-color:#5486a8}.option input{margin:6px 0 0;accent-color:#285d7d;flex-shrink:0}.option .letter{color:var(--muted);font-size:12px;font-weight:750;padding-top:3px}.option.correct,.option.correct:has(input:checked){border-color:#76b395;background:#edf7f1}.option.wrong,.option.wrong:has(input:checked){border-color:#d78f8f;background:#fdf0ef}.option .answer-tag{display:block;font-size:12px;font-weight:750;margin-top:4px}.question-actions{display:flex;justify-content:space-between;gap:12px;margin-top:24px;padding-top:21px;border-top:1px solid var(--line)}.feedback{padding:20px;border-radius:10px;background:#edf6f1;border:1px solid #b2d6c2;margin-top:23px}.feedback.miss{background:#fff5ee;border-color:#e6c7b0}.feedback h3{margin-bottom:8px}.feedback p{font-size:15px}.refs{font-size:12px;display:flex;flex-wrap:wrap;gap:5px 16px;margin-top:13px}.feedback:focus{outline:none}.score-hero{display:flex;gap:28px;align-items:center;margin-bottom:30px}.score-ring{--score:0;width:140px;height:140px;flex-shrink:0;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--score)*1%),#e2e8ec 0);display:grid;place-items:center}.score-ring>div{background:white;border-radius:50%;width:116px;height:116px;display:grid;align-content:center;text-align:center;font-size:35px;font-weight:750;line-height:1.2}.score-ring small{font-size:12px;font-weight:500}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}.topic-row{padding:10px 0}.topic-line{display:flex;justify-content:space-between;font-size:13px;gap:10px}.topic-row .progress{margin:6px 0;height:5px}.review-card{margin:15px 0;border:1px solid var(--line);background:white;border-radius:10px;padding:18px}.review-card summary{font-size:15px}.review-card p{font-size:14px;margin:12px 0}.review-card li{font-size:14px;padding:4px}.review-card .code-block{font-size:13px}.history-row{display:flex;justify-content:space-between;font-size:13px;border-bottom:1px solid var(--line);gap:12px;padding:10px 0}.footer{border-top:1px solid var(--line);padding:22px 0;font-size:12px;color:var(--muted)}.hidden{display:none!important}.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;background:white;padding:10px;z-index:10}dialog{max-width:480px;width:calc(100% - 36px);border:1px solid var(--line);border-radius:14px;padding:27px;color:var(--ink)}dialog::backdrop{background:#10253385}.storage-warning{background:#fff2dc;padding:12px 25px;font-size:13px}#live{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.checklist{padding-left:22px;font-size:14px}.checklist li{margin-bottom:10px}
+@media(max-width:900px){.hero{gap:25px}.hero-code{padding:19px}.hero-code pre{font-size:12px}.exam-layout{grid-template-columns:190px minmax(0,1fr);gap:17px}.map{grid-template-columns:repeat(4,1fr)}.question-card{padding:22px}}
+@media(max-width:680px){.shell{padding-left:17px;padding-right:17px}.main{padding-top:25px}.topnote{display:none}.brand{font-size:14px}.hero{grid-template-columns:1fr;gap:15px}.hero-code{display:none}h1{letter-spacing:-1px}.setup-grid,.result-grid{grid-template-columns:1fr}.control-row{gap:12px}.stats .stat{padding:15px 12px}.stat strong{font-size:23px}.stat span{font-size:11px}.panel{padding:20px}.exam-layout{display:flex;flex-direction:column}.sidebar{position:static;width:100%}.sidebar .panel{padding:14px}.map{grid-template-columns:repeat(10,1fr);gap:5px}.map button{height:29px;font-size:11px}.question-card{width:100%;padding:20px}.question-card h2{font-size:21px}.question-top{flex-wrap:wrap}.score-hero{gap:18px}.score-ring{width:110px;height:110px}.score-ring>div{width:90px;height:90px;font-size:28px}.score-hero h1{font-size:29px}.resume{align-items:flex-start;flex-direction:column}.code-block{font-size:12px;padding:15px}.question-actions{flex-wrap:wrap}.question-actions .actions{width:100%;justify-content:space-between}}
+@media print{header,.sidebar,.actions,.question-actions,.footer,select,#review-controls,button{display:none!important}.shell{padding:0}.panel,.review-card{break-inside:avoid;border:1px solid #ccc;box-shadow:none}.result-grid{display:block}.code-block{white-space:pre-wrap;background:#f4f4f4;color:black}.tok-string,.tok-key,.tok-var,.tok-comment{color:black}body{background:white}}
+.learning-section{margin-top:25px;margin-bottom:25px;scroll-margin-top:20px}.lesson-nav{display:flex;flex-wrap:wrap;gap:10px 22px;margin:26px 0;padding:17px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.lesson-nav a{font-size:14px;font-weight:650}.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}.anatomy-lines{background:var(--navy);border-radius:10px;padding:12px;overflow:auto}.anatomy-line{display:flex;border:0;border-radius:5px;width:100%;background:transparent;color:#dfedf5;justify-content:flex-start;text-align:left;padding:8px 10px;white-space:pre;font-weight:400;font-size:14px}.anatomy-line:hover:not(:disabled){background:#29465c}.anatomy-line>span{color:#a7c2d4;width:28px;flex-shrink:0;font:12px monospace}.anatomy-line code{font:13px/1.6 Consolas,monospace}.lesson-dl dt{font-weight:750;margin-top:17px}.lesson-dl dd{margin:4px 0 14px;color:var(--muted)}input[type=search]{display:block;width:100%;margin-top:9px;border:1px solid #bccbd5;border-radius:9px;padding:13px;background:white;color:var(--ink);font:inherit}.term-row{padding:19px 0;border-bottom:1px solid var(--line)}.term-row h3{margin:0 0 6px}.term-row p{margin:0 0 5px}.term-row a{font-size:12px}.self-check{padding:20px 0;border-bottom:1px solid var(--line)}.self-check:last-child{border:0}.self-check .notice{margin-bottom:0}.history-attempt{margin:16px 0}.history-attempt h3{margin-bottom:5px}.history-attempt .actions{margin-top:15px}.history-score{font-size:29px;white-space:nowrap}.history-score small{display:block;font-size:13px;text-align:right}.score-trend{display:flex;align-items:flex-end;gap:15px;padding:20px 0;overflow-x:auto}.score-trend>div{min-width:48px;max-width:65px;flex:1;text-align:center;font-weight:700;font-size:13px}.trend-track{height:125px;background:#edf1f4;position:relative;margin:5px 0}.trend-track>div{position:absolute;bottom:0;width:100%;background:#385e76}.review-choices{padding-left:23px}.review-choices li{margin:9px 0}.review-choices strong{font-size:12px;margin-left:8px}.choice-correct{color:var(--green)}.choice-incorrect{color:var(--red)}.toprow{flex-wrap:wrap;padding-top:12px;padding-bottom:12px}.toplinks{flex-wrap:wrap}.learning-section .code-block{max-height:none}.learning-section h2{scroll-margin-top:15px}
+@media(max-width:680px){.learn-grid{grid-template-columns:1fr}.toplinks{gap:8px}.toprow{gap:5px}.anatomy-line code{font-size:11px}.anatomy-line{width:max-content;min-width:100%}.history-attempt .section-title{align-items:flex-start}.history-attempt h3{font-size:16px}.history-score{font-size:24px}.lesson-nav{gap:8px 14px}}
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+<header class="topbar"><div class="shell toprow"><div class="brand"><span class="brand-icon" aria-hidden="true">{ }</span>XM CLOUD <span style="font-weight:400">/ Practice Studio</span></div><div class="toplinks"><span class="topnote">DEVELOPER CERTIFICATION PREP</span><button class="textbtn" id="home-button">Study desk</button></div></div></header>
+<div id="storage-warning" class="storage-warning hidden" role="status">Browser storage is unavailable. You can still take the exam, but progress and history will not survive closing this page.</div>
+<main id="main" class="shell main" tabindex="-1"></main>
+<footer class="footer"><div class="shell">Independent practice material • Original questions, not official exam questions • Sources checked October 20, 2026 • Runs offline; reference links need internet</div></footer>
+<div id="live" aria-live="polite"></div>
+<dialog id="confirm-dialog" aria-labelledby="dialog-title"><h2 id="dialog-title"></h2><p id="dialog-text"></p><div class="actions"><button id="dialog-cancel">Keep studying</button><button class="primary" id="dialog-confirm">Confirm</button></div></dialog>
+<noscript><p style="padding:30px">Enable JavaScript to take this interactive exam. No account or internet connection is required.</p></noscript>
+<script>
+// Original practice questions; source links explain the underlying concepts.
+const base = 'https://doc.sitecore.com/sai/en/developers/sitecoreai/';
+const edge = base + 'experience-edge/experience-edge-apis/';
+const SOURCES = {
+ overview: ['SitecoreAI / XM Cloud overview', base+'sitecoreai.html'],
+ guide: ['2023 community study guide (historical scope)', 'https://navansitecorenotes.blogspot.com/2023/10/sitecore-xm-cloud-developer.html'],
+ queries: ['GraphQL: queries', 'https://graphql.org/learn/queries/'],
+ spec: ['GraphQL specification: executable documents', 'https://spec.graphql.org/September2025/'],
+ types: ['GraphQL: schemas and types', 'https://graphql.org/learn/schema/'],
+ response: ['GraphQL: responses and errors', 'https://graphql.org/learn/response/'],
+ validation: ['GraphQL: validation', 'https://graphql.org/learn/validation/'],
+ schema: ['Experience Edge schema', edge+'the-experience-edge-schema.html'],
+ examples: ['Sitecore: Delivery GraphQL examples', edge+'query-examples-for-the-delivery-graphql-api.html'],
+ hd: ['Headless Services 23.x: Delivery examples', 'https://doc.sitecore.com/xp/en/developers/hd/23/sitecore-headless-development/query-examples-for-the-delivery-api.html'],
+ apis: ['Experience Edge APIs', edge+'experience-edge-apis.html'],
+ differences: ['Preview and Delivery differences', edge+'differences-between-the-preview-and-the-delivery-graphql-apis.html'],
+ best: ['Experience Edge best practices', base+'experience-edge/experience-edge-best-practices.html'],
+ hosts: ['Authoring, editing and rendering hosts', base+'environment-editing-hosts-and-rendering-hosts.html'],
+ deploy: ['Deployment options', base+'deploying-sitecoreai.html'],
+ environment: ['Manage an environment', base+'deploying-sitecoreai/deploy-app/manage-an-environment.html'],
+ build: ['Build configuration', base+'deploying-sitecoreai/the-sitecoreai-build-configuration.html'],
+ modeling: ['Content modeling and presentation', base+'content-modeling-and-presentation.html'],
+ pages: ['Structuring pages', base+'recommendations--structuring-pages.html'],
+ placeholders: ['Placeholder restrictions', base+'set-placeholder-restrictions.html'],
+ scs: ['Content Serialization', base+'sitecore-content-serialization.html'],
+ module: ['Create a serialization module', base+'sitecore-content-serialization/create-a-sitecore-content-serialization-module.html'],
+ scope: ['SCS configuration reference', 'https://doc.sitecore.com/xp/en/developers/100/developer-tools/sitecore-content-serialization-configuration-reference.html'],
+ cli: ['CLI serialization commands', 'https://doc.sitecore.com/xp/en/developers/100/developer-tools/the-cli-serialization-command.html'],
+ author: ['Authoring and Management GraphQL API', base+'content-modeling-and-presentation/sitecore-authoring-and-management-graphql-api.html'],
+ workflow: ['Workflow', base+'content-modeling-and-presentation/workflow.html'],
+ security: ['User security', base+'user-security.html'],
+ rights: ['Access rights', base+'user-security/the-access-rights.html'],
+ fields: ['Editing shared, unversioned and versioned fields', 'https://doc.sitecore.com/sai/en/users/sitecoreai/build-pages/creating-webpages/edit-a-page-s-content.html'],
+ templates: ['Data definition and template overview', 'https://doc.sitecore.com/xp/en/developers/102/sitecore-experience-manager/data-definition-and-template-overview.html'],
+ standard: ['Standard values and tokens', 'https://doc.sitecore.com/xp/en/developers/105/sitecore-experience-manager/standard-values-for-data-template-fields.html']
+};
+const BANK = [];
+function add(id, topic, level, prompt, code, options, correct, explanation, sources) {
+ BANK.push({id,topic,level,prompt,code,options,correct:Array.isArray(correct)?correct:[correct],explanation,sources:sources.split(',')});
+}
+const G='GraphQL reading';
+add('G01',G,'Foundation','What does this request retrieve?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    id
+    name
+  }
+}`,['The ID and name of one English item','Every field of all English items','The rendered HTML of the whole site','A new item named Home'],0,'Read from the outside in: item selects the content record; the braces select only id and name. This query does not create content.','schema');
+add('G02',G,'Foundation','Where is the requested title value in a successful JSON response?',`query {
+  page: item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    heading: field(name: "Title") { value }
+  }
+}`,['data.page.heading.value','data.item.Title','data.page.field.heading','data.heading.page'],0,'Follow the aliases and nesting: page → heading → value, inside data. An alias changes a response key.','response');
+add('G03',G,'Foundation','What does the exclamation mark require?',`query Page($path: String!, $language: String!) {
+  item(path: $path, language: $language) { name }
+}`,['Both variables must receive non-null strings','Both strings must end in !','The server must publish the item first','Both variables are optional'],0,'String! is a non-null input type. With no defaults here, omitting either variable is invalid. It says nothing about whether an item exists.','types');
+add('G04',G,'Applied','Which variables JSON fits this operation?',`query Page($path: String!, $language: String!) {
+  item(path: $path, language: $language) { id }
+}`,['{"path":"/sitecore/content/Acme/Travel/Home","language":"en"}','{"$path":"/sitecore/content/Acme/Travel/Home","$language":"en"}','{"path":42,"language":null}','{"variables":"en"}'],0,'The JSON keys omit the $ prefix. The values must satisfy the declared input types.','queries');
+add('G05',G,'Foundation','What is PageSummary in this document?',`query PageSummary {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") { name }
+}`,['The operation name','A Sitecore template name','A response alias for item','A field being returned'],0,'PageSummary names this operation for identification and debugging. It does not add a field to the response.','queries');
+add('G06',G,'Applied','What is the purpose of the aliases here?',`query {
+  english: item(path: "/sitecore/content/Acme/Travel/Home", language: "en") { name }
+  french: item(path: "/sitecore/content/Acme/Travel/Home", language: "fr-FR") { name }
+}`,['Separate the two results under different keys','Translate English automatically','Merge both records into one language version','Change the item names in Sitecore'],0,'english and french distinguish results for the same field with different arguments. They do not translate or modify content.','queries');
+add('G07',G,'Applied','Assume Article is a valid projected template type. What does the inline fragment do?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home/News", language: "en") {
+    id
+    ... on Article { headline { value } }
+  }
+}`,['Selects headline when the returned object matches Article','Changes the item template to Article','Finds every Article in the tree','Renames id to headline'],0,'The type condition gates the template-specific selection. id is outside that condition; the fragment is not a search filter.','schema,types');
+add('G08',G,'Applied','What is reused by ...Identity?',`fragment Identity on Item { id name }
+query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    ...Identity
+    parent { ...Identity }
+  }
+}`,['The id and name selection for both objects','The same returned item object','A server-side cache entry','A mutation that copies the parent'],0,'A fragment reuses a selection set, not a particular result. Each object supplies its own values.','queries');
+add('G09',G,'Applied','With variables {"showName":false}, what happens to name?',`query Page($showName: Boolean!) {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    id
+    name @include(if: $showName)
+  }
+}`,['It is omitted from the selected response','It is returned as false','It is always returned as null','It is erased from Sitecore'],0,'@include selects the field only when its condition is true. Omitted and null are different.','spec');
+add('G10',G,'Applied','With variables {"hideName":true}, which field remains selected?',`query Page($hideName: Boolean!) {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    id
+    name @skip(if: $hideName)
+  }
+}`,['id only','name only','Both id and name','Neither field'],0,'@skip removes its field when true. It does not affect the adjacent id field.','spec');
+add('G11',G,'Foundation','What does rendered represent in this Experience Edge query?',`query {
+  layout(site: "travel", routePath: "/destinations", language: "en") {
+    item { rendered }
+  }
+}`,['Layout Service JSON describing the page','The complete browser HTML document','A list of deployment logs','A command that publishes the route'],0,'The front end uses this layout data to render components and placeholders. The API does not render the final browser page here.','hd');
+add('G12',G,'Applied','Which value belongs in routePath for the About route in this layout query?',`layout(site: "travel", routePath: /* choose */, language: "en") {
+  item { rendered }
+}`,['"/about"','"/sitecore/content/Acme/Travel/Home/About"','"Title"','"master"'],0,'routePath identifies the route within the selected site. An item-tree path instead belongs in an item lookup.','examples');
+add('G13',G,'Foundation','What is selected from the immediate parent?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home/About", language: "en") {
+    name
+    parent { id name }
+  }
+}`,['Its id and name','All ancestors recursively','All siblings and their descendants','Its complete layout automatically'],0,'The nested parent selection requests two properties of one parent. No recursive traversal is implied.','hd');
+add('G14',G,'Applied','What is this query useful for?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    children(hasLayout: true, first: 5) {
+      results { name url { path } }
+    }
+  }
+}`,['A first batch of child-page navigation links','Every descendant without pagination','An XML sitemap returned as a string','Creating five page layouts'],0,'children traverses one level; hasLayout filters for presentation details. first caps this page of results.','examples');
+add('G15',G,'Applied','What does this search condition select?',`search(where: {
+  name: "_parent"
+  value: "11111111111111111111111111111111"
+  operator: EQ
+}) { results { name } }`,['Items whose immediate parent has that ID','Only the item with that ID','Every ancestor of that item','Items whose names contain that ID'],0,'_parent is the immediate-parent ID, so this condition targets direct children.','schema');
+add('G16',G,'Applied','Which interpretation of this _path filter is correct?',`search(where: {
+  name: "_path"
+  value: "22222222222222222222222222222222"
+  operator: CONTAINS
+}) { results { id name } }`,['Matches the identified item and its descendant branch','Matches only an exact URL string','Matches only immediate children','Searches the media filename'],0,'This special field contains hierarchy IDs. The filter can include the branch root itself, not just its descendants.','schema');
+add('G17',G,'Applied','What is the role of _templates here?',`search(where: {
+  name: "_templates"
+  value: "33333333333333333333333333333333"
+  operator: CONTAINS
+}) { results { name } }`,['Matches a template ID including base-template inheritance','Finds only template definition items','Creates that template','Selects the newest item version'],0,'_templates includes the template inheritance chain. It is not a request to return template definitions.','schema');
+add('G18',G,'Applied','Which items satisfy the complete filter?',`search(where: {
+  AND: [
+    { name: "_language", value: "en", operator: EQ }
+    { name: "_parent", value: "44444444444444444444444444444444", operator: EQ }
+  ]
+}) { results { id } }`,['English items directly under the specified parent','All English items plus every child in any language','Only the parent itself in English','All descendants in all languages'],0,'AND requires both conditions at once. _parent constrains depth to direct children.','examples');
+add('G19',G,'Applied','Assume this schema supports the shown OR input. Which languages match?',`search(where: {
+  OR: [
+    { name: "_language", value: "en", operator: EQ }
+    { name: "_language", value: "fr-FR", operator: EQ }
+  ]
+}) { results { name } }`,['English or French (France)','Only items simultaneously in both languages','All languages except those two','Only a language literally named en,fr-FR'],0,'OR accepts either condition. This does not merge language variants into one record.','schema');
+add('G20',G,'Challenge','What is the combined effect? Assume both values are valid item IDs.',`search(where: {
+  AND: [
+    { name: "_path", value: "55555555555555555555555555555555", operator: CONTAINS }
+    { name: "_path", value: "66666666666666666666666666666666", operator: NCONTAINS }
+  ]
+}) { results { name } }`,['Include the first branch while excluding the second branch','Include the union of both branches','Exclude both branches','Return only the two root items'],0,'Both clauses must pass. NCONTAINS removes the excluded root and its descendants from the matching branch.','hd');
+add('G21',G,'Applied','How do you request the next page of this same search?',`{
+  "data": {
+    "search": {
+      "total": 23,
+      "pageInfo": { "endCursor": "opaque-token", "hasNext": true },
+      "results": [ /* 10 items */ ]
+    }
+  }
+}`,['Keep the filter and pass after: "opaque-token"','Set first: 23 and delete the filter','Use page: 2 on every GraphQL API','Decode the cursor and increment it manually'],0,'Reuse the returned cursor as after. Treat cursors as opaque; their internal format is not your pagination contract.','examples');
+add('G22',G,'Applied','The response has total: 31 and eight results. What does that mean?',`search(where: { name: "_language", value: "en", operator: EQ }, first: 8) {
+  total
+  results { id }
+  pageInfo { endCursor hasNext }
+}`,['31 matches overall; this page contains eight','Only eight items exist in the environment','31 fields exist on each item','The request failed because counts differ'],0,'total describes the matching set; results is the current page. Continue using pageInfo if more results are needed.','hd');
+add('G23',G,'Foundation','When should a cursor-pagination loop stop?',`"pageInfo": { "endCursor": "last-token", "hasNext": false }`,['When hasNext is false','Only when total is zero','Whenever endCursor is nonempty','After exactly two requests'],0,'The API has indicated there is no following page. A nonempty last cursor is not a signal to continue.','examples');
+add('G24',G,'Challenge','Why might a large, deeply nested query need restructuring?',null,['It can exceed query-complexity limits; request less per call','GraphQL permits only one field in a response','Every nested field is a mutation','Adding aliases always eliminates complexity'],0,'Bound nested collections, paginate, and remove unused selections. Test realistic queries against Delivery as well as Preview.','best,differences');
+add('G25',G,'Foundation','Why request jsonValue for this field?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    field(name: "HeroImage") { jsonValue }
+  }
+}`,['To obtain field data compatible with Sitecore SDK field helpers','To fetch the image binary directly','To serialize the entire Sitecore database','To bypass all publishing restrictions'],0,'jsonValue provides a structured field representation for SDK rendering helpers, including complex fields.','hd');
+add('G26',G,'Applied','What is wrong with the selection if name is a String scalar?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    name { value }
+  }
+}`,['A scalar cannot have a nested selection set','Every field must have value beneath it','The operation needs a mutation keyword','The item must be published twice'],0,'Leaf scalars are selected directly. Object-valued fields need subfields; scalars do not.','validation');
+add('G27',G,'Applied','What happens if the active schema has no field called imaginaryScore?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    imaginaryScore
+  }
+}`,['Validation rejects the unknown field','The API automatically creates the field','The API guesses the closest field name','The field always resolves to zero'],0,'A request must agree with the endpoint schema before execution. Inspect schema documentation instead of assuming a field exists.','validation');
+add('G28',G,'Applied','Which TWO conclusions are justified by this response?',`{
+  "data": { "page": { "name": "Home", "heading": null } },
+  "errors": [
+    { "message": "Field resolution failed", "path": ["page", "heading"] }
+  ]
+}`,['Some requested data was returned','The client must inspect errors as well as data','The entire operation succeeded without errors','The server created a new item'],[0,1],'GraphQL can return partial data together with execution errors. The error path identifies the affected response position.','response');
+add('G29',G,'Applied','A valid Delivery query returns item: null without errors. What is the best next investigation?',null,['Check the item identity, language, publishing state and target environment','Assume GraphQL syntax is invalid','Rename the operation to mutation','Assume every null means an expired credential'],0,'A missing result is distinct from a validation or authentication failure. Confirm that the requested content is actually available on that Delivery target.','apis,response');
+add('G30',G,'Challenge','Which TWO statements correctly interpret this query? Assume Promo is a valid template type.',`query Campaign($id: String!, $lang: String! = "en") {
+  card: item(path: $id, language: $lang) {
+    id
+    ... on Promo { title: field(name: "Title") { value } }
+  }
+}`,['lang defaults to en when omitted','card is the response key for the item','Promo is an alias for id','Explicit null is valid for lang because it has a default'],[0,1],'Omission uses the default; explicit null still violates String!. The Promo fragment adds a type condition.','types,spec');
+add('G31',G,'Applied','Which change allows two different field(name: ...) selections to coexist?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    field(name: "Title") { value }
+    field(name: "Summary") { value }
+  }
+}`,['Use title: field(...) and summary: field(...)','Rename query to mutation','Remove both value selections','Put the field names in comments'],0,'Different arguments conflict under the same response key. Distinct aliases resolve that conflict.','validation');
+add('G32',G,'Challenge','The document contains two named queries. What identifies which one to execute in a GraphQL request?',`query Home { item(path: "/sitecore/content/Acme/Travel/Home", language: "en") { id } }
+query About { item(path: "/sitecore/content/Acme/Travel/Home/About", language: "en") { id } }`,['An operationName such as "About"','The last query always runs','Both queries always run automatically','A field alias named operationName'],0,'When there are multiple operations, the request must select one by name. The document order does not choose it.','spec');
+add('G33',G,'Applied','A query worked in a different Sitecore project but its template fragment fails here. What should you inspect first?',null,['The actual projected types and fields in this endpoint schema','The CSS class used for the component','The spelling of the operation name only','The number of browser tabs open'],0,'Template-derived type names depend on the content model. Sample template names are not universal API types.','schema');
+add('G34',G,'Applied','Can this operation update an item through Experience Edge Delivery?',`mutation UpdateHeadline {
+  updateItem(input: { /* authoring input */ }) { /* result */ }
+}`,['No; use the appropriate Authoring and Management API instead','Yes, if the operation name includes Update','Yes, if the item is already published','Yes, if you add an alias'],0,'Delivery is read-only. A mutation keyword does not add unsupported operations to an endpoint. The shown input is deliberately schematic.','author');
+add('G35',G,'Challenge','An exact text comparison behaves differently on Preview and Delivery. What is the best response?',null,['Check documented indexing/operator differences and test both endpoints','Assume identical query shapes guarantee identical indexing','Change every EQ into a mutation','Remove language constraints permanently'],0,'Preview uses a different search implementation. Tokenization can affect text matches even when the query shape is shared.','differences');
+add('G36',G,'Challenge','Which TWO reading habits are sound for this snippet?',`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    name
+    children(first: 3) { results { name } }
+  }
+}`,['Separate the root name from names inside children.results','Recognize that first limits a page of children','Assume grandchildren are included automatically','Assume first: 3 guarantees exactly three matches'],[0,1],'Trace each brace level. The root and children have separate name selections; a limit is a maximum, not a guarantee.','types,examples');
+
+add('A01','Architecture','Foundation','Which arrangement best fits XM Cloud headless delivery?',null,['Authors manage content in CM; a front end consumes published content from Experience Edge','Visitors connect directly to the authoring database','Experience Edge stores and executes your React components','Every visitor needs a Cloud Portal account'],0,'Content management and public rendering are separated. Experience Edge supplies published content for the front end.','overview');
+add('A02','Architecture','Foundation','An author must preview an unpublished change in the visual editor. Which host has the relevant role?',null,['The editing host','The public DNS registrar','A Git package registry','An SMTP relay'],0,'An editing host supports the visual editing experience. The rendering host serves public visitors.','hosts');
+add('A03','Architecture','Applied','Which TWO responsibilities belong to a typical developer team using XM Cloud?',null,['Implement and deploy the front-end application','Model content and integrate components','Manually patch the hosted CM operating system every month','Install a private copy of Experience Edge on each visitor device'],[0,1],'SaaS removes hosted-platform maintenance work, while implementation and content-model decisions remain part of the solution.','overview');
+add('A04','Architecture','Applied','A new React component is deployed but its required template fields are missing in QA. Which gap best explains it?',null,['The associated Sitecore item definitions were not deployed with the code','GraphQL automatically deleted the template','Every component must use a separate CM database','The browser needs administrator rights'],0,'Front-end code alone does not create the structural Sitecore items it depends on. Version and deploy those definitions together.','scs');
+add('D01','Deployment','Foundation','Which TWO interfaces support automating deployment management?',null,['The Deploy REST API','The Sitecore CLI XM Cloud plugin','A layout GraphQL query','A rendering parameter'],[0,1],'The API and CLI support deployment automation. Layout queries and rendering parameters serve different purposes.','deploy');
+add('D02','Deployment','Applied','Commits to feature/menu do not deploy an environment configured to watch main. What should you check?',null,['The environment branch binding and automatic-deployment setting','The page title field','The media item alternate text','The GraphQL operation alias'],0,'Automatic deployment follows the configured branch and trigger settings. A commit to another branch need not trigger it.','environment');
+add('D03','Deployment','Foundation','What is xmcloud.build.json used for in an XM Cloud solution?',null,['Configuring aspects of the XM Cloud build and deployment','Storing every author-edited item','Declaring the GraphQL language grammar','Replacing all front-end environment variables'],0,'This build configuration describes deployment-related settings such as rendering hosts and actions. It is not the content database.','build');
+add('D04','Deployment','Applied','A deployment fails during its build stage. What is the most useful first evidence?',null,['The failed deployment logs for that stage and commit','The last visitor cookie','A random published page title','A screenshot of the source-control logo'],0,'Stage-specific logs help locate the actual failure before you change dependencies or configuration.','environment');
+add('D05','Deployment','Applied','QA and production must use different service credentials. Where should you configure the appropriate values?',null,['Environment-specific settings with suitable secret handling','A public JavaScript file committed with production secrets','One shared page field editable by every author','The GraphQL operation name'],0,'Bind configuration to the target environment. Credentials should not become public application assets.','environment');
+add('L01','Renderings & layouts','Foundation','What is a placeholder?',null,['A named location where components can be rendered','A template that stores every language version','An API token','A source-control branch'],0,'Placeholder keys connect layout structure to component placement.','modeling');
+add('L02','Renderings & layouts','Applied','Authors should place only approved components in a specific region. What should you configure?',null,['Allowed controls in the relevant placeholder settings','The GraphQL query name','The item display name only','A new language for the site'],0,'Placeholder restrictions guide which renderings an author can insert there. They are separate from API access controls.','placeholders');
+add('L03','Renderings & layouts','Foundation','Which relationship correctly describes SXA presentation reuse?',null,['A page design can combine partial designs, which contain renderings','A rendering always contains every page design','A partial design is an API credential','A data template is compiled CSS'],0,'Partial designs package reusable presentation; page designs assemble the page structure.','pages');
+add('L04','Renderings & layouts','Applied','One header must be maintained centrally across many page designs. Which approach fits?',null,['Reuse a header partial design','Copy independent headers to every page','Store the header in the deployment logs','Create a new content language per page'],0,'Reusing a partial design centralizes changes across the places that use it.','pages');
+add('L05','Renderings & layouts','Applied','Which pairing correctly separates a component’s content from presentation choices?',null,['A data source holds content; rendering parameters can hold display options','Rendering parameters are the public content database','A placeholder is the component image file','The data source always contains CSS compiled by Sitecore'],0,'A card can read its title and image from a data source while its rendering instance carries presentation options.','modeling');
+add('S01','Serialization','Foundation','Which command brings configured Sitecore items onto disk?',`dotnet sitecore ser _____`,['pull','push','publish','login'],0,'pull reads Sitecore items into serialized files. push applies files in the opposite direction.','cli');
+add('S02','Serialization','Foundation','What is the main purpose of storing serialized templates and rendering items in source control?',null,['Review and deploy item definitions alongside dependent code','Replace GraphQL with YAML in every browser','Publish all drafts automatically','Keep user passwords in the repository'],0,'Serialization makes structural item changes versionable and repeatable across environments.','scs');
+add('S03','Serialization','Applied','What does this include scope cover?',`{
+  "name": "feature-templates",
+  "path": "/sitecore/templates/Feature/Travel",
+  "scope": "ItemAndChildren"
+}`,['The Travel item and its immediate children','Only Travel','Travel and every descendant at every depth','Every template in the database'],0,'ItemAndChildren stops after one child level. ItemAndDescendants would include deeper descendants.','scope');
+add('S04','Serialization','Challenge','Which TWO statements match this setting for in-scope items?',`"allowedPushOperations": "CreateAndUpdate"`,['Missing target items can be created from local files','Existing target items can be updated from local files','Target items absent from local files are deleted by this setting','All push changes are forbidden'],[0,1],'CreateAndUpdate allows creation and updates, but excludes deletion. Review the effective include and rule configuration.','scope');
+add('S05','Serialization','Applied','A specific item was unexpectedly excluded from serialization. Which command best explains its inclusion decision?',null,['dotnet sitecore ser explain --path "<item path>"','dotnet sitecore ser push','A Delivery layout query','A browser hard refresh'],0,'explain reports why a path is included or excluded. This is more targeted than pushing changes blindly.','cli');
+add('I01','APIs & webhooks','Foundation','Which API should an integration use to create or edit Sitecore items?',null,['Authoring and Management GraphQL API','Experience Edge Delivery GraphQL API','A public media URL','The browser History API'],0,'Authoring operations belong to the authoring API, with appropriate authentication and permissions. Delivery retrieves content.','author');
+add('I02','APIs & webhooks','Foundation','A saved draft is visible in Preview but absent from Delivery. What is the expected distinction?',null,['Preview can expose unpublished content; Delivery serves published content','Preview and Delivery must always return identical content','Delivery automatically publishes every save','Preview contains only production content'],0,'Saving and publishing are separate steps. Verify publishing eligibility and target when investigating this difference.','apis');
+add('I03','APIs & webhooks','Applied','A front end needs to refresh after content is published to Edge. Which integration pattern fits?',null,['An Edge publishing webhook invokes a rebuild or revalidation receiver','A query alias invalidates every frontend cache','A field named Refresh forces all browsers to reload','A component parameter runs deployment scripts'],0,'A webhook can notify downstream systems; the receiver implements the rebuild or cache-refresh action. The event itself does not rebuild your app.','best');
+add('I04','APIs & webhooks','Applied','Which API administers Experience Edge settings and webhooks?',null,['Experience Edge Admin REST API','The read-only item query','The CSS Object Model','A Sitecore template inline fragment'],0,'Administration is separate from delivery queries. Use the appropriate management interface and credentials.','apis');
+add('P01','Pages & authoring','Foundation','What is the main purpose of XM Cloud Pages (called Page builder in newer documentation)?',null,['Visually compose and edit site pages','Manage Git merge conflicts','Replace the public front-end host','Patch the CM operating system'],0,'This visual authoring interface lets authors work with page content and presentation.','overview');
+add('P02','Pages & authoring','Applied','Two pages use the same component data-source item. An author edits that item. What should they expect?',null,['Both usages can reflect the updated shared content after the relevant delivery updates','Sitecore automatically clones the data source first','Only the page URL changes','The second usage becomes permanently disconnected'],0,'A shared data source represents the same content item. Use independent items when the content must vary independently.','modeling');
+add('P03','Pages & authoring','Applied','A page is still in a non-final workflow state. What should you check before expecting it on the public site?',null,['Approval and publishing eligibility, then publishing status','Whether its query uses an alias','Whether its React file has a short filename','Whether its template has exactly four fields'],0,'Workflow controls progression toward publishable content. Saving in an editor alone does not complete approval and publication.','workflow');
+add('P04','Pages & authoring','Applied','A French title change must not alter the English title or older numbered versions. Which field behavior fits?',null,['Versioned','Shared','Unversioned across all languages','A rendering placeholder'],0,'A versioned field belongs to one numbered version in one language.','fields');
+add('U01','Security','Foundation','What is the appropriate approach when an editor needs access to one content area?',null,['Grant the necessary role and item rights for that work','Make every editor an administrator','Share the organization owner account','Expose management credentials in page HTML'],0,'Role-based access and item rights let permissions match the job. Blanket administrator access is unnecessary.','security,rights');
+add('U02','Security','Applied','An author can see an item but cannot edit it. Which distinction should you investigate?',null,['Read versus write rights, plus workflow and locking constraints','GraphQL aliases versus fragments','PNG versus JPEG image formats','The order of CSS imports'],0,'Visibility does not imply edit permission. Inspect effective access and the item’s editing state.','rights,workflow');
+add('U03','Security','Applied','Who manages authentication and user onboarding for the hosted platform?',null,['Sitecore Cloud Portal','The public site’s anonymous visitor session','A GraphQL fragment','The component’s CSS module'],0,'Cloud Portal manages platform authentication and user creation. Item-level authorization is a separate concern.','security');
+add('U04','Security','Challenge','Which TWO are sound controls for a privileged authoring integration?',null,['Use only the permissions the integration needs','Keep management secrets out of browser-delivered code','Rely on a difficult-to-guess operation name for authorization','Give anonymous visitors the integration’s management token'],[0,1],'A query name is not access control. Authenticate the integration and protect credentials that permit management operations.','author,security');
+add('M01','Data modeling','Foundation','Several page types need SEO title and description fields. What avoids duplicating those field definitions?',null,['A shared base data template inherited by those page templates','Separate identical fields copied into every template','A GraphQL alias for each field','One deployment environment per field'],0,'Template inheritance reuses field definitions while concrete templates add their own fields.','templates');
+add('M02','Data modeling','Applied','A product identifier must have one value across every language and numbered version. Which storage setting fits?',null,['Shared','Unversioned','Versioned','A fragment'],0,'Shared fields use one value across languages and versions.','fields');
+add('M03','Data modeling','Applied','A label must be translated, but each language should share its value across all numbered versions. Which setting fits?',null,['Unversioned','Shared','Versioned','A layout key'],0,'Unversioned fields vary by language, but not by numbered version within that language.','fields');
+add('M04','Data modeling','Applied','Where should a reusable default field value for a data template normally be defined?',null,['The template’s Standard Values item','Every component’s deployment log','The GraphQL operation name','The rendering host DNS record'],0,'Standard Values supply defaults for fields without their own values and support consistent template-based content.','standard');
+add('M05','Data modeling','Challenge','A Title standard value uses $name. An item is created as Beach, then renamed Coast. What happens to the populated Title without further edits?',null,['It stays Beach','It automatically becomes Coast on every rename','It becomes the literal string $name','It is removed from all language versions'],0,'Creation-time token replacement is not a live binding to the item name. Renaming does not re-run the token.','standard');
+
+// Keep the original definitions immutable so in-progress v1 attempts remain valid.
+const LEGACY_BANK = BANK.map(q=>({...q,options:[...q.options],correct:[...q.correct],sources:[...q.sources]}));
+function revise(id, options, explanation, changes={}) {
+ const i=BANK.findIndex(q=>q.id===id);
+ if(i<0)throw new Error('Unknown question '+id);
+ BANK[i]={...BANK[i],level:'Applied',options,explanation,...changes};
+}
+revise('G01',[
+ 'One item with its own name and the names in its first page of direct children',
+ 'One item with its own name and the names of every descendant',
+ 'The names of child items, with the root item excluded from the response',
+ 'The root item and exactly two children, even if fewer children exist'
+],'There are two selection levels: the root name and children.results[].name. first is a maximum for that connection, and no grandchildren are selected.',{
+ prompt:'Assume the item exists and has five direct children, each with descendants. Which interpretation is justified by this query?',
+ code:`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    name
+    children(first: 2) { results { name } }
+  }
+}`,level:'Challenge'});
+revise('G02',['data.page.heading.value','data.PageSummary.page.heading.value','data.page.Title.value','data.item.field.value'],
+ 'Neither the operation name nor the field argument creates a response key. Follow the two aliases, then value.',{
+ prompt:'A successful response contains a non-null item and title field. Which JavaScript access path retrieves the title?',
+ code:`query PageSummary {
+  page: item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    heading: field(name: "Title") { value }
+  }
+}`});
+revise('G03',[
+ 'Omitting language uses en; explicitly passing null fails variable coercion',
+ 'Omitting language and explicitly passing null both use en',
+ 'Both variables must be provided because both types have an exclamation mark',
+ 'Omitting language is valid, but an explicit empty string is rejected by String!'
+],'A default handles omission, not explicit null. String! prohibits null, but does not prohibit an empty string.',{
+ prompt:'Which statement about these input variables is correct?',
+ code:`query Page($path: String!, $language: String! = "en") {
+  item(path: $path, language: $language) { name }
+}`,level:'Challenge'});
+revise('G04',[
+ '{"path":"/sitecore/content/Acme/Travel/Home","language":"en"}',
+ '{"$path":"/sitecore/content/Acme/Travel/Home","$language":"en"}',
+ '{"path":{"value":"/sitecore/content/Acme/Travel/Home"},"language":"en"}',
+ '{"path":"/sitecore/content/Acme/Travel/Home","language":["en"]}'
+],'Variable names in the separate JSON dictionary omit $. String inputs are scalar strings, not field-value objects or lists.');
+revise('G05',[
+ 'The operation name; changing it alone leaves the selected response keys unchanged',
+ 'A root response key wrapping the item object',
+ 'A projected template type that constrains the item lookup',
+ 'A resolver argument used to select the page layout'
+],'The operation name identifies the operation. Aliases and selected fields determine response keys; arguments and type conditions have separate syntax.');
+revise('G06',[
+ 'They permit different arguments on item while keeping distinct response keys',
+ 'They are required because an operation may contain only one root field name',
+ 'They force both results to resolve to the same published language version',
+ 'They create two operations that the client must select using operationName'
+],'Both selections are in one operation. Aliases avoid the response-key conflict caused by differing arguments; they do not alter language resolution.');
+revise('G07',[
+ 'id remains selected, but headline is absent when the runtime type does not match Article',
+ 'The entire item is null when its runtime type does not match Article',
+ 'headline is always present with null when the runtime type does not match Article',
+ 'The query fails validation whenever the returned item is not an Article'
+],'A valid type condition controls which fields apply at runtime. A nonmatching fragment neither filters out the item nor inserts a null key.',{
+ prompt:'Article is a valid possible type, but this lookup returns a different template type that does not match Article. What should you expect?',level:'Challenge'});
+revise('G08',[
+ 'Both objects receive the id and name selection, but their values can differ',
+ 'The parent inherits the root item’s values because both use the same fragment',
+ 'The parent is returned only if its id equals the root id',
+ 'Identity becomes a nested response object beneath both item and parent'
+],'A fragment contributes fields to each selection set. It does not copy result values, compare objects, or create an Identity response key.');
+revise('G09',[
+ 'name is omitted because @skip evaluates to true',
+ 'name is included because @include evaluates to true',
+ 'name is returned as null because the directives cancel each other',
+ 'The document is invalid because these two directives cannot share a field'
+],'A field must pass both conditions: include must be true and skip must be false. Here skip wins by excluding the field.',{
+ prompt:'Both supplied variables are true. What happens to name?',
+ code:`query Page($details: Boolean!, $compact: Boolean!) {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    id
+    name @include(if: $details) @skip(if: $compact)
+  }
+}`,level:'Challenge'});
+revise('G10',[
+ 'The query fails validation because the unknown field is still part of the document',
+ 'The query succeeds because the invalid selection is skipped at execution',
+ 'The query returns id plus imaginaryScore: null and no errors',
+ 'The query returns partial data and a field-resolution error for imaginaryScore'
+],'Directives do not bypass validation. An unknown field is a request error before resolver execution, even when it would be skipped.',{
+ prompt:'The Item type has no imaginaryScore field. What happens to this request?',
+ code:`query {
+  item(path: "/sitecore/content/Acme/Travel/Home", language: "en") {
+    id
+    imaginaryScore @skip(if: true)
+  }
+}`,sources:['validation','spec'],level:'Challenge'});
+revise('G11',[
+ 'Layout Service JSON, including component placement and the data needed for rendering',
+ 'Only the route item’s content fields, excluding component and placeholder information',
+ 'The final HTML for the route, already rendered by the public rendering host',
+ 'A GraphQL selection set that the client must execute as a second query'
+],'rendered carries page-layout data. A front-end application still resolves components and renders the user interface.');
+revise('G12',[
+ '"/about", resolved within the site named travel',
+ '"/sitecore/content/Acme/Travel/Home/About", resolved as a CMS item path',
+ '"https://travel.example/about", resolved as the public URL including hostname',
+ '"/en/about", required even when language is supplied separately'
+],'routePath is a route within the selected site. CMS item paths and absolute public URLs are different identifiers; a language prefix is not universally required.');
+revise('G13',[
+ 'The root item’s name plus the immediate parent’s id and name',
+ 'The root item’s name plus a list of all ancestors with id and name',
+ 'The immediate parent’s id and name, with the root name replaced',
+ 'The root item’s name plus all sibling names through the parent relationship'
+],'Each nested relationship must be selected explicitly. parent does not implicitly request ancestors, siblings, or children.');
+revise('G14',[
+ 'At most five direct children with layout, with only name and url.path requested',
+ 'The first five direct children, with layout-less items returned as null entries',
+ 'At most five descendants at any depth, sorted by public URL',
+ 'All direct children with layout, with first limiting the number of fields'
+],'The filter applies to the child connection. The limit is on returned items, not fields; the query specifies neither recursion nor a URL sort.',{
+ prompt:'Which statement is guaranteed by the query’s structure, assuming a valid request?'});
+revise('G15',[
+ 'Direct children of the specified parent, including different templates unless further filtered',
+ 'All descendants of the specified parent, including grandchildren',
+ 'Only the specified parent, provided it has at least one child',
+ 'Direct children using the same template as the specified parent'
+],'_parent restricts the immediate parent ID. It supplies neither a recursive branch test nor a template constraint.');
+revise('G16',[
+ 'The identified root and matching descendants; this alone does not restrict results to pages',
+ 'Only descendants with layout; the root is always excluded',
+ 'Only direct children; the value is treated as an immediate-parent ID',
+ 'Any item whose public URL contains the textual GUID'
+],'_path expresses ancestry by item ID. Add presentation-related conditions if the requirement is specifically navigable pages.');
+revise('G17',[
+ 'It can match items through an inherited base template, not just their concrete template',
+ 'It matches only items whose concrete template ID equals the supplied ID',
+ 'It matches template-definition items whose names contain the supplied ID',
+ 'It follows references stored in multilist fields to find related items'
+],'The special field includes template inheritance IDs. It is not a relationship-field traversal or a template-name search.');
+revise('G18',[
+ 'English items whose immediate parent is the supplied item',
+ 'English descendants of the supplied item at any depth',
+ 'All English items, combined with direct children in every language',
+ 'The supplied parent’s English version and all its direct children'
+],'Both clauses must be true for each returned record. Neither clause says to include the parent or traverse every depth.');
+revise('G19',[
+ 'Records satisfying either language condition; no automatic grouping by item ID is implied',
+ 'One record per item ID, preferring en when both language versions exist',
+ 'Only items that have both an English and a French language version',
+ 'English records with French field values merged in through fallback'
+],'OR filters records. Deduplication across language variants and language fallback are separate behaviors, not consequences of OR.');
+revise('G20',[
+ 'The first root and its branch, minus any records that also belong to the second branch',
+ 'Only direct children of the first root, excluding the second root itself',
+ 'Both branches, excluding only records whose own IDs equal the two supplied IDs',
+ 'The first branch, retaining descendants of the excluded root as long as their IDs differ'
+],'NCONTAINS on _path excludes membership in the second branch, including its descendants. If the branches do not overlap, the exclusion removes nothing.');
+revise('G21',[
+ 'Keep the search constraints and pass the returned endCursor as after',
+ 'Keep the search constraints and pass results.length as after',
+ 'Keep after unchanged and increase first by the previous page size',
+ 'Remove the language filter and use the cursor to continue across every language'
+],'A cursor continues the same filtered connection. An item count is not a cursor; changing constraints changes the result set being paginated.');
+revise('G22',[
+ 'There are 31 matches; eight were returned on this page, so further pages must be considered',
+ 'There are 31 matches, and the API has already returned all 31 in results',
+ 'There are eight matching records; total counts fields across those records',
+ 'There are 31 matches, but only eight are accessible because first is a permission limit'
+],'first controls a page size. total is not the number of fields or an access-control setting; pageInfo determines continuation.');
+revise('G23',[
+ 'Stop this traversal because hasNext is false, even though endCursor is populated',
+ 'Continue until the API returns an empty cursor',
+ 'Continue until a repeated cursor causes a validation error',
+ 'Send one more request because the last page might be exactly the page size'
+],'hasNext is the continuation signal. A nonempty final cursor does not require a speculative extra page.');
+revise('G24',[
+ 'Limit nested collections and paginate them while retaining the fields the feature requires',
+ 'Add aliases to the nested fields so each alias receives a separate complexity budget',
+ 'Increase first so that fewer HTTP requests necessarily mean lower per-query complexity',
+ 'Replace variables with literals so the server no longer counts the nested selections'
+],'Aliases and literals do not remove requested work. Fewer HTTP requests can mean a more expensive individual query; bound the fan-out.');
+revise('G25',[
+ 'It returns the field representation expected by SDK field components',
+ 'It returns exactly the same scalar string as value for every field type',
+ 'It returns layout JSON for every rendering that references the item',
+ 'It ensures the field is editable even if the component ignores SDK editing support'
+],'Structured field data and editing-aware rendering are related but distinct. jsonValue alone cannot make arbitrary UI support inline editing.');
+revise('G26',[
+ 'Remove the sub-selection from name; keep sub-selections on object-valued fields',
+ 'Replace value with jsonValue under name to support the Sitecore SDK',
+ 'Add an alias to name so the scalar is treated as an object',
+ 'Move name into a fragment without changing its sub-selection'
+],'Aliases and fragments cannot change a field’s declared type. A String remains a leaf selection.');
+revise('G27',[
+ 'The document fails validation before resolver execution',
+ 'The server returns item with all valid fields and an error only for the unknown field',
+ 'The unknown field returns null if the item itself is nullable',
+ 'The field is accepted if an item contains a stored content field with that exact name'
+],'A GraphQL field must exist on the selected schema type. A stored Sitecore field does not automatically become a directly selectable property in every context.');
+revise('G28',[
+ 'Execution returned usable data for at least part of the request',
+ 'The error path identifies heading within the aliased page response',
+ 'The response demonstrates a document-validation failure before any fields executed',
+ 'Every selected field resolved successfully; null simply means the title was empty'
+],'data.page.name survived while an error points to page.heading. This is partial execution, not pre-execution validation failure or evidence of a merely empty authored field.',{
+ prompt:'page and heading are aliases in the request. Which TWO statements are supported by this response?',level:'Challenge'});
+revise('G29',[
+ 'Confirm the requested item and language were published to the Delivery environment being queried',
+ 'Move the same request to the authoring endpoint without changing its schema-specific arguments',
+ 'Assume the operation name must match the Sitecore item name',
+ 'Treat null without errors as proof that the API token was rejected'
+],'Content availability, target environment, and identifier selection explain a missing result without requiring a syntax or authentication failure.');
+revise('G30',[
+ 'Omitting lang uses en, but explicitly passing null does not',
+ 'If Promo does not match, id remains selected and title is omitted',
+ 'The alias card changes which Sitecore item is selected by id',
+ 'If Promo does not match, title is required to appear as null'
+],'Defaults apply to omitted variables; the non-null type rejects explicit null. A nonmatching fragment omits its fields and does not null the whole item.',{
+ prompt:'Promo is a valid possible type. Which TWO statements hold for this operation?',level:'Challenge'});
+revise('G31',[
+ 'Give the two field selections different aliases, retaining their arguments and subfields',
+ 'Put each conflicting field selection in a different named fragment without aliases',
+ 'Add an operation name so the server can distinguish the two field arguments',
+ 'Rename the variables supplied to field while leaving both response keys as field'
+],'Conflicts concern response keys and arguments, including selections introduced through fragments. Operation names and variable spelling do not distinguish result keys.');
+revise('G32',[
+ 'The request’s operationName must identify one of the named operations',
+ 'The client must rename each root item field to match its operation name',
+ 'The server executes both operations and merges their data objects',
+ 'The server executes whichever operation appears first in the document'
+],'A multi-operation document needs explicit operation selection. Aliases operate within a selected operation and do not choose it.');
+revise('G33',[
+ 'Compare the actual projected type and field names against the target endpoint schema',
+ 'Keep the fragment unchanged and replace the operation name with the template ID',
+ 'Assume publishing the page alone will create any fragment type named in the query',
+ 'Move the same template-specific field directly onto Item to avoid type validation'
+],'Projection depends on the target content model. Verify schema types rather than removing the type condition or changing an unrelated operation label.');
+revise('G34',[
+ 'No; select the authoring endpoint and use its mutation schema and authorization',
+ 'Yes; a management token enables mutation fields on the Delivery schema',
+ 'Yes; POST enables writes while GET is limited to read operations',
+ 'No; use Preview instead because its unpublished content support includes mutations'
+],'Endpoint capability is not determined by HTTP method or a stronger credential. Preview and Delivery are read-only content APIs.');
+revise('G35',[
+ 'Investigate tokenization and documented operator semantics on each endpoint',
+ 'Assume EQ means substring matching on Delivery whenever Preview returned extra matches',
+ 'Assume equal query shapes imply that any difference must be a publishing failure',
+ 'Replace the filter with aliases, since aliases enforce exact text comparison'
+],'Shared shapes do not imply identical search indexes. Operator behavior needs to be tested in the endpoint where the query will run.');
+revise('G36',[
+ 'The root name and each child name occupy different nesting levels',
+ 'Three is an upper bound for the returned child page, not a required count',
+ 'The limit applies to the total number of selected name fields, including the root',
+ 'A child with its own children automatically includes those grandchildren'
+],'The connection limit applies to child results. Only the explicitly selected relationship depth appears.');
+
+revise('A01',[
+ 'CM handles authoring; Experience Edge supplies published data; a separate application renders the public site',
+ 'CM handles authoring and renders every public request; Edge caches the resulting HTML',
+ 'The public application reads authoring data directly; publishing updates its React source files',
+ 'Experience Edge hosts the public application code as well as the published content schema'
+],'Separate content authoring, content delivery, and front-end execution. Edge delivers content and layout data; it does not replace the application host.',{
+ prompt:'A team is drawing the request path for its public Next.js site. Which allocation of responsibilities is accurate?'});
+revise('A02',[
+ 'Investigate editing-host connectivity and configuration while retaining the working public rendering host',
+ 'Point the visual editor at the Delivery API only, because the public site already renders',
+ 'Republish the site before checking editing-host configuration, since saved drafts are on Edge',
+ 'Move the production domain to the editing host so both audiences share one endpoint'
+],'A working public site does not prove the editing integration is healthy. Draft visualization requires the authoring/editing path.',{
+ prompt:'The public site is healthy, but authors cannot load a saved, unpublished page in the visual editor. Which is the best initial direction?'});
+revise('A03',[
+ 'Deploy the front-end implementation and its environment configuration',
+ 'Deploy the structural Sitecore items required by the implementation',
+ 'Assume publishing the page also deploys the new React implementation',
+ 'Assume a new component file automatically creates its data-template fields'
+],'Code deployment and structural item deployment are both implementation concerns. Content publishing does not substitute for either.',{
+ prompt:'A new component depends on a new content field. Which TWO tasks must the implementation team account for before release?'});
+revise('A04',[
+ 'Check that the new field definition is serialized, included, and pushed to QA with the release',
+ 'Republish the existing page repeatedly until GraphQL infers the missing field from React',
+ 'Clear the QA Delivery cache before changing structural items, because schema projection alone creates fields',
+ 'Rebuild only the front-end component map, because the missing field is a rendering-registration issue'
+],'Confirm deployment of the structural dependency. Credentials and publishing content do not invent missing item definitions.',{
+ prompt:'React code reads a new field successfully in development. In QA the field definition is absent from the template, although the code deployment succeeded. What is the targeted fix?'});
+revise('D01',[
+ 'Use the Deploy REST API for project and environment deployment operations',
+ 'Use the Sitecore CLI XM Cloud plugin for supported deployment operations',
+ 'Use Experience Edge Admin REST operations to compile and release CM changes',
+ 'Use Authoring GraphQL item mutations as a replacement for environment deployment'
+],'The deployment interfaces manage releases. Edge administration and authoring CRUD are separate responsibilities.',{
+ prompt:'A CI pipeline must automate deployment management. Which TWO interfaces are appropriate?'});
+revise('D02',[
+ 'Check the watched branch, trigger setting, and whether the commit reached that branch',
+ 'Inspect only the public hosting provider’s branch binding; the XM Cloud environment binding is irrelevant',
+ 'Trigger content publication from main, because it is the step that starts a code deployment',
+ 'Enable the repository connection again without checking which branch the environment watches'
+],'A feature-branch commit will not trigger a main-bound environment unless it reaches main and the trigger is enabled.');
+revise('D03',[
+ 'The project’s XM Cloud build/deployment configuration, including supported host and action settings',
+ 'The environment’s entire runtime secret store, serialized into the repository',
+ 'The list of every content item and field value to be published on a release',
+ 'The module include rules that exclusively govern all serialization paths'
+],'Build configuration, environment values, serialized item data, and module include rules are distinct configuration layers.');
+revise('D04',[
+ 'Inspect the failing stage’s logs and the configuration used for the affected commit',
+ 'Roll back content to the last published version, because build failures establish that item data is incompatible',
+ 'Rotate the Delivery token first, because an unchanged public site implies a failed Edge connection',
+ 'Run the post-deployment item synchronization manually, despite the build not having completed'
+],'Investigate evidence from the failed stage before altering other systems. Content publication and delivery caches do not repair a build dependency failure.',{
+ prompt:'A release fails before the deployment stage; the previous public site still works. What should you do first?'});
+revise('D05',[
+ 'Verify which environment supplies the value and whether it is read at build time or runtime',
+ 'Update only the CM environment setting, without checking which application consumes the value',
+ 'Invalidate only the content CDN, assuming the application’s build-time configuration will change',
+ 'Restart the public application without checking whether the value was embedded into the build'
+],'The consuming host and the timing of configuration reads matter. Environment changes may need a rebuild or redeploy depending on how the application uses them.',{
+ prompt:'A public application still calls the QA service after a production configuration change. Which investigation best targets the problem?'});
+revise('L01',[
+ 'It identifies the component insertion location that the layout data and front-end placeholder must agree on',
+ 'It selects the content item that supplies the rendering’s text and images',
+ 'It defines the data template inherited by every component in that region',
+ 'It sets the language version independently of the layout request'
+],'A placeholder is a placement contract. The data source, template, and language serve different roles.',{
+ prompt:'A component appears in layout data but not in the intended region of the page. Why is the placeholder key relevant?'});
+revise('L02',[
+ 'Configure allowed renderings on the placeholder settings used by that region',
+ 'Set the data-source template on the page’s data item',
+ 'Set compatible renderings on an unrelated component definition',
+ 'Remove write rights from every component data-source item'
+],'Allowed controls target insertion into a placeholder. Data-source restrictions and compatible renderings address other authoring decisions.');
+revise('L03',[
+ 'Page designs assemble reusable partial designs; partial designs contain presentation elements',
+ 'Partial designs select the page data template; page designs store field values for components',
+ 'Page designs and partial designs are interchangeable; either can serve as the same composition level',
+ 'Page designs must duplicate partial-design renderings to propagate changes to their pages'
+],'Page and partial designs organize presentation reuse. They do not replace the content model or require independent copies.');
+revise('L04',[
+ 'Reference a common header partial design from the relevant page designs',
+ 'Copy the same renderings into each page and share only their placeholder keys',
+ 'Create independent header partial designs with identical display names',
+ 'Use one shared text field but keep the header’s component structure duplicated'
+],'Sharing content alone does not centralize the header’s layout. Reusing the presentation definition centralizes structural changes.');
+revise('L05',[
+ 'Use separate rendering-parameter values for each instance while referencing the same data-source item',
+ 'Duplicate the data-source item whenever a different display variant is needed',
+ 'Change a shared content field to alter only one rendering instance’s appearance',
+ 'Change the data-source template so its fields become rendering parameters automatically'
+],'Instance-specific display configuration can differ while content is reused. Duplicating content introduces unnecessary divergence.',{
+ prompt:'Two cards need identical title/image content but different display options. The component supports those options as rendering parameters. Which configuration best fits?'});
+revise('S01',[
+ 'pull, after verifying the target environment and inclusion configuration',
+ 'push, because local YAML must be overwritten by the remote definitions',
+ 'package install, because it always downloads the instance’s latest items',
+ 'validate, because it refreshes serialized fields from the environment'
+],'pull reads the configured instance into local files. push and package installation apply local artifacts to an instance; validation is not a refresh.',{
+ prompt:'A developer made a template change in CM and wants its YAML representation in a code review. Which subcommand fills the blank?'});
+revise('S02',[
+ 'Version structural items with the code and deliberately scope which author-owned content is deployed',
+ 'Include the author-owned content subtree with CreateUpdateAndDelete to keep it identical to local development',
+ 'Use CreateOnly for every structural item so later field-definition changes never overwrite deployed items',
+ 'Keep structural items outside source control and recreate them manually after each code deployment'
+],'Structural items should travel with dependent code. Broadly synchronizing author-owned production content can overwrite or remove work.',{
+ prompt:'Which serialization strategy best supports repeatable releases without treating all production-authored content as developer-owned?'});
+revise('S03',[
+ 'Travel and its immediate children; deeper section/field descendants may be omitted',
+ 'Travel and every descendant, because the path is under templates',
+ 'Only immediate children; Travel itself is excluded',
+ 'Every descendant except immediate children, which are inferred on push'
+],'Scope behavior does not change for template paths. Template structures often span multiple levels, so a shallow include may be incomplete.',{
+ prompt:'Travel contains template items, which in turn contain sections and fields. What is the important implication of this include?',level:'Challenge'});
+revise('S04',[
+ 'An item present locally but absent remotely can be created',
+ 'An item present in both locations can be updated',
+ 'An in-scope remote item absent locally is deleted to match source control',
+ 'Existing remote items are preserved unchanged even when local files differ'
+],'CreateAndUpdate permits both additions and updates. It excludes deletion; CreateOnly is the mode that avoids updating existing items.',{
+ prompt:'Assume this is the effective rule and no narrower rule overrides it. Which TWO outcomes are allowed?',level:'Challenge'});
+revise('S05',[
+ 'Use ser explain for the item path to inspect the effective include/rule decision',
+ 'Use ser validate alone to determine which module’s scope selected the item',
+ 'Use ser push to force the item into scope regardless of module configuration',
+ 'Use ser info alone, without inspecting the affected path or the rule that matches it'
+],'explain is designed to explain selection. Validation checks integrity, while synchronization still follows inclusion rules.');
+revise('I01',[
+ 'Authoring and Management GraphQL with its supported mutation input and authorization',
+ 'Delivery GraphQL with a token that has broader management permissions',
+ 'Preview GraphQL because unpublished records are necessarily writable there',
+ 'Edge Admin REST because all APIs containing Admin expose item-field CRUD'
+],'Choose the operation-specific API. Read access to unpublished data and administrative control over Edge are not item-authoring mutations.');
+revise('I02',[
+ 'Confirm approval and publication of the correct language/version to the queried Edge target',
+ 'Switch production permanently to Preview so publication is no longer required',
+ 'Redeploy the React application first, even though its direct Delivery query lacks the update',
+ 'Invalidate the application cache before investigating publication, despite the direct API returning the old value'
+],'The direct Delivery result isolates the issue upstream of front-end rendering. Check publication and target selection before the application.',{
+ prompt:'Preview returns the edited title. A direct Delivery query returns its previous value, and production shows that same old value. What should you verify first?'});
+revise('I03',[
+ 'Trigger the application’s rebuild or revalidation process through a publishing webhook',
+ 'Clear the Edge cache only, leaving the application’s previously generated HTML intact',
+ 'Republish the same items without triggering a rebuild or revalidation of application output',
+ 'Redeploy only CM, assuming it replaces HTML already generated by the external application host'
+],'Edge publication and an application’s cached/generated output are separate stages. The receiver must perform the refresh action.',{
+ prompt:'A direct Delivery query returns new content, but a statically generated site still serves old HTML. Which integration addresses this gap?'});
+revise('I04',[
+ 'Experience Edge Admin REST API',
+ 'Experience Edge Delivery GraphQL API',
+ 'Sitecore Authoring and Management GraphQL API',
+ 'XM Cloud Deploy REST API'
+],'The relevant resource is Edge configuration/webhooks. Item authoring and environment deployments use different management interfaces.',{
+ prompt:'An integration needs to manage Experience Edge webhooks and settings rather than author items or deploy source code. Which API is intended for that resource?'});
+revise('P01',[
+ 'Configure and validate the component’s Sitecore definition, placement, and editing integration',
+ 'Deploy the component implementation and rely on its public-site rendering as proof of editor compatibility',
+ 'Add its data-source template but omit rendering registration and placeholder configuration checks',
+ 'Configure the allowed rendering but omit the front-end implementation mapping and editing checks'
+],'A front-end implementation and its authoring integration must agree. File presence alone is not the complete authoring contract.',{
+ prompt:'A developer adds a component to the front-end project. What must be considered before authors can reliably insert and edit it in Pages?',sources:['modeling','placeholders']});
+revise('P02',[
+ 'Create or select a separate data-source item for the page that must diverge',
+ 'Change only the rendering UID while keeping the shared data-source reference',
+ 'Change the placeholder key while keeping the shared data-source reference',
+ 'Set a different display parameter and expect it to create an independent title value'
+],'A different rendering instance or placement does not duplicate its referenced content. Independent text requires independent content storage.',{
+ prompt:'Two pages reference one data-source item. Authors now need different titles on those pages while keeping the same component implementation. What should change?'});
+revise('P03',[
+ 'Advance the intended version through workflow as required, then publish and verify the target',
+ 'Publish the page’s parent only and assume the intended version’s workflow state is irrelevant',
+ 'Rebuild the front end against the same Delivery content without completing the content approval',
+ 'Verify the English version’s approval when the requested route uses a different language'
+],'Presentation queries and application deployments do not replace content approval and publication.');
+revise('P04',[
+ 'Versioned, because both language and numbered-version isolation are required',
+ 'Unversioned, because language isolation also isolates all numbered versions',
+ 'Shared, because each translated page maintains its own shared-field value',
+ 'A rendering parameter on the shared design, because it versions the page’s Title field'
+],'Unversioned would affect every numbered version in French. Shared would also cross language boundaries; a display parameter is not the field’s storage behavior.');
+revise('U01',[
+ 'Assign an appropriate role and evaluate its effective rights on the intended subtree',
+ 'Grant read access to the root and assume it also grants write access to descendants',
+ 'Assign an organization-level role and assume it resolves every item-level restriction',
+ 'Grant write on a parent and assume explicit restrictions below it cannot affect access'
+],'Evaluate effective permissions at the content scope. Platform roles, read rights, and inherited grants do not make every downstream authorization equivalent.');
+revise('U02',[
+ 'Inspect effective item/field write rights and the workflow or locking state',
+ 'Inspect only the organization role, assuming app and item rights cannot further restrict editing',
+ 'Check only the item’s Read right, assuming visible fields must also be writable',
+ 'Assign broad item Write permission without checking field restrictions, workflow, or locks'
+],'Read, write, field access, workflow, and locking affect different parts of the editing decision.');
+revise('U03',[
+ 'Platform authentication is established; app access and item-level authorization still need checking',
+ 'The problem must be a content lock; no further app or item authorization checks are needed',
+ 'The problem must be publication state, because portal authentication supplies item-write rights',
+ 'The user’s organization membership is sufficient; only the rendering-host configuration needs checking'
+],'Authentication proves identity, not permission for every application or content operation.',{
+ prompt:'A user can sign in to Cloud Portal but cannot edit the required content. What conclusion is warranted?'});
+revise('U04',[
+ 'Authorize the integration only for the operations and resources it needs',
+ 'Keep its privileged management credential in trusted server-side configuration',
+ 'Rely on CORS alone to keep a credential embedded in browser JavaScript confidential',
+ 'Use a private operation name as the primary control for privileged mutations'
+],'CORS does not hide a secret shipped to the browser. An operation name identifies a request; it is not an authorization mechanism.');
+revise('M01',[
+ 'Move the common field definitions into a base template inherited by the page templates',
+ 'Create independent fields with the same names in each page template and assume they share identity',
+ 'Copy the standard-values item between unrelated templates without introducing a common base',
+ 'Use a branch template to duplicate the structures at creation time instead of establishing inheritance'
+],'Base-template inheritance reuses definitions. Identical names, shared data items, and creation-time branch structures are different mechanisms.');
+revise('M02',[
+ 'Shared: changes affect the field across languages and numbered versions',
+ 'Unversioned: changes affect all numbered versions and therefore all languages',
+ 'Versioned with the same standard value: later edits automatically propagate everywhere',
+ 'A base-template field: inheritance alone makes its values shared'
+],'Field-definition inheritance and field-value storage are separate. Sharing a definition does not make every item/version share one value.');
+revise('M03',[
+ 'Unversioned: one value per language across that language’s numbered versions',
+ 'Shared: one value per language across that language’s numbered versions',
+ 'Versioned: one value per language regardless of numbered version',
+ 'A standard value: edits to any item version always update all its language versions'
+],'Only unversioned combines language-specific values with numbered-version sharing. Defaults do not change storage scope.');
+revise('M04',[
+ 'Set the template’s Standard Values and confirm that the existing item has no explicit override',
+ 'Set Standard Values and expect them to overwrite all existing explicit item values',
+ 'Set the value on the template definition item’s display name',
+ 'Set a rendering parameter and expect it to become the stored field default'
+],'Defaults and explicit item overrides are different. Changing a default is not a blanket replacement of every authored value.',{
+ prompt:'A default should apply to new items and to existing items that still inherit that field’s default. Which approach fits?'});
+revise('M05',[
+ 'It remains Beach because the token was resolved when the item was created',
+ 'It becomes Coast because standard-value tokens are re-evaluated on every read',
+ 'It becomes Coast only after publishing, because tokens are re-evaluated by Edge',
+ 'It becomes $name because renaming invalidates the prior standard-value substitution'
+],'$name substitution happens at creation. A populated Title is not a live expression that tracks subsequent renames.');
+
+// Preserve revision 2 for attempts saved before weighted exam mode was added.
+const REVISION2_BANK = BANK.map(q=>JSON.parse(JSON.stringify(q)));
+const BLUEPRINT = [
+ {topic:'Architecture',name:'XM Cloud Architecture and Developer Workflow',count:6},
+ {topic:'Deployment',name:'Deployment of XM Cloud Projects',count:8},
+ {topic:'Renderings & layouts',name:'Renderings and Layout',count:7},
+ {topic:'Serialization',name:'Sitecore Content Serialization',count:7},
+ {topic:'APIs & webhooks',name:'Sitecore APIs & Webhooks',count:5},
+ {topic:'Pages & authoring',name:'XM Cloud Pages',count:5},
+ {topic:'Security',name:'Security for Developers',count:5},
+ {topic:'Data modeling',name:'Data Modeling',count:7}
+];
+add('A05','Architecture','Applied','A site has its own languages, content, and presentation settings but belongs to a broader site collection. Which interpretation best fits this arrangement?',null,
+ ['A collection groups related sites; a site remains a distinct configured experience','Every site in a collection must expose identical routes and content','A collection is a substitute for a deployment environment','Each collection must correspond to one public hostname'],0,
+ 'A collection organizes sites. It is a different concept from an environment, hostname, or shared route structure.','overview,modeling');
+add('A06','Architecture','Applied','A developer chooses Sitecore-first development for a new component. Which sequence best describes that choice?',null,
+ ['Define the Sitecore content and presentation contract, then implement the front end against it','Create a disconnected manifest and import it as the only possible first step','Publish a front-end bundle to Edge, then generate templates from that bundle','Build every page as static HTML before defining component content'],0,
+ 'Sitecore-first starts with the CMS model and presentation definitions. The application implements that contract; a disconnected code-first manifest is a different workflow.','modeling');
+add('D06','Deployment','Applied','An environment deployment succeeds, but the public site still executes the previous component implementation. Which check most directly separates the deployment responsibilities?',null,
+ ['Verify that the public rendering application was built and released from the intended commit','Republish every item because content publication replaces JavaScript bundles','Pull serialized templates locally because that updates the public host','Rotate the Preview key because it controls which JavaScript bundle is served'],0,
+ 'The CM release and the public application release are separate concerns. Confirm the actual host and commit serving the public application.','hosts,deploy');
+add('D07','Deployment','Applied','An automated release must apply a new rendering definition before content that references it becomes available. What should the release design account for?',null,
+ ['The structural item synchronization and its ordering relative to dependent operations','Only the public site build, since it reconstructs rendering definitions on first use','Only publishing, since rendering definition items do not belong in source control','The local developer database, since deployed environments share its item storage'],0,
+ 'Code and structural items need a coordinated release. Include the required serialized definitions and verify when they are applied.','scs,build');
+add('D08','Deployment','Applied','A local front end can retrieve published content but authors cannot use it for visual editing. Which conclusion is sound?',null,
+ ['Delivery access proves content retrieval; the editing integration still needs separate setup and validation','A successful Delivery query proves the editing host is configured correctly','The solution must use a different template for every editing session','Production must switch to the local host before editing can be tested'],0,
+ 'Reading published content does not exercise the authoring-to-editing-host integration. Validate that path independently.','hosts');
+add('L06','Renderings & layouts','Applied','Authors should choose data sources only from a particular area and based on a particular content template. Which rendering-definition settings address this?',null,
+ ['Data-source location and data-source template','Allowed controls and the placeholder key only','Compatible renderings and the page-design name only','The public hostname and default language'],0,
+ 'These settings constrain the content selection for a rendering. Placeholder restrictions constrain component placement, a separate task.','modeling,placeholders');
+add('L07','Renderings & layouts','Applied','A component works with one data source but should offer two supported visual variants without duplicating the content. What must the front-end implementation do?',null,
+ ['Recognize and implement the selected variant while consuming the same content contract','Assume creating a variant item also creates its front-end markup','Use a different item ID for each variant even when content is identical','Replace the data template with a page design for each variant'],0,
+ 'A presentation choice requires matching application behavior. A CMS configuration item alone does not implement new front-end markup.','modeling,pages');
+add('S06','Serialization','Challenge','A module has an ItemAndDescendants include and a rule excluding a demo subtree. What should you verify before assuming a missing demo item will be recreated by push?',null,
+ ['The effective inclusion rules; an excluded subtree is not synchronized by that include','Only the file extension, because every YAML file is always pushed','Only the target database, because rules affect pull but never push','The GraphQL type name, because projection overrides serialization rules'],0,
+ 'Selection rules control the synchronization scope. Inspect the effective path decision rather than assuming any local YAML file will be applied.','scope,cli');
+add('S07','Serialization','Applied','A teammate changed templates in CM but committed only application files. What is the most useful addition to that change before another developer reproduces it?',null,
+ ['Pull the in-scope template items and commit their serialized definitions with the code','Publish the templates and assume that stores their definitions in Git','Push the unchanged local files to overwrite CM before reading its changes','Commit only the rendered page HTML as a representation of the template'],0,
+ 'Pull captures the CMS-side definitions on disk; source control then carries both the implementation and its structural dependency.','scs,cli');
+add('I05','APIs & webhooks','Challenge','A component needs page layout for /offers on travel in English. Which request selects the layout data instead of looking up a CMS item-tree path?',
+ 'A: layout(site: "travel", routePath: "/offers", language: "en") { item { rendered } }\nB: item(path: "/offers", language: "en") { name }\nC: search(where: { name: "_name", value: "offers", operator: EQ }) { results { name } }\nD: item(path: "/sitecore/content/Acme/Travel/Home/Offers", language: "en") { id }',
+ ['A, because the site and route identify the page whose layout is requested','B, because every public route is also an absolute CMS item path','C, because finding an item name automatically selects its layout','D, because selecting an item ID automatically returns rendered layout'],0,
+ 'The layout entry point uses site, route path, and language. The other selections do not request layout JSON.','hd');
+add('P05','Pages & authoring','Applied','A page uses a shared header partial design. An author wants to change only this page’s body content. Which action best preserves the intended reuse?',null,
+ ['Edit the page-specific content or data source rather than the shared header design','Duplicate every partial design in the site before editing the body','Change the shared header source and expect it to affect only this page','Remove the page design so the body becomes independent of all templates'],0,
+ 'Identify what is shared and what is page-specific before editing. Updating shared presentation or content may affect multiple usages.','pages,modeling');
+add('U05','Security','Applied','A user belongs to several roles. A role change appears correct, but the user still cannot perform the required item operation. What is the best verification?',null,
+ ['Inspect the user’s effective access on the actual item, including other memberships and inheritance','Inspect only the most recently assigned role and ignore other memberships','Assume the public Delivery token controls the user’s Content Editor rights','Change the item display name to remove inherited security restrictions'],0,
+ 'Effective access depends on the applicable permissions, memberships, and inheritance. A single role viewed in isolation may not explain the result.','rights,security');
+add('M06','Data modeling','Applied','Authors need to create a predefined group of items with initial values in one operation. The group should be copied at creation, rather than remain a live shared structure. Which mechanism fits?',null,
+ ['A branch template','A base data template alone','A shared component data-source reference','A partial design alone'],0,
+ 'A branch template provides an item structure for creation. Template inheritance defines fields; shared references and partial designs express other kinds of reuse.','templates');
+add('M07','Data modeling','Challenge','An item overrides a field that otherwise inherits a template standard value. The author wants to restore inheritance of that default. Which action expresses that intent?',null,
+ ['Reset the field to its standard value rather than keep an explicit item override','Copy the current default text into the field and assume future default changes will flow through','Rename the field so its stored value is ignored','Mark the field Shared so the default becomes its only possible value'],0,
+ 'Restoring standard-value inheritance differs from explicitly storing identical text. An explicit copied value can remain an override when the default changes later.','standard,fields');
+
+</script>
+<script>
+'use strict';
+const VERSION=1, KEY='xm-cloud-practice-v1', HISTORY_KEY=KEY+'-history';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const BANKS={
+ 1:Object.fromEntries(LEGACY_BANK.map(q=>[q.id,q])),
+ 2:Object.fromEntries(REVISION2_BANK.map(q=>[q.id,q])),
+ 3:Object.fromEntries(BANK.map(q=>[q.id,q]))
+};
+let byId=BANKS[3];
+const topics=[...new Set(BANK.map(q=>q.topic))];
+const main=$('#main');
+let session=null, history=[], screen='setup', reviewFilter='missed', storageOK=true;
+function storageRead(key){try{return JSON.parse(localStorage.getItem(key)||'null')}catch{storageOK=false;return null}}
+function storageWrite(key,value){try{localStorage.setItem(key,JSON.stringify(value))}catch{storageOK=false}storageStatus()}
+function storageStatus(){$('#storage-warning').classList.toggle('hidden',storageOK)}
+function validSession(s){
+ return s&&s.version===VERSION&&Array.isArray(s.ids)&&s.ids.length>0&&new Set(s.ids).size===s.ids.length&&s.ids.every(id=>byId[id])&&
+ Number.isInteger(s.position)&&s.position>=0&&s.position<s.ids.length&&s.answers&&s.drafts&&s.order&&Array.isArray(s.flags)&&
+ s.ids.every(id=>Array.isArray(s.order[id])&&s.order[id].length===byId[id].options.length&&new Set(s.order[id]).size===byId[id].options.length&&s.order[id].every(n=>Number.isInteger(n)&&n>=0&&n<byId[id].options.length))&&
+ Object.entries(s.answers).every(([id,a])=>s.ids.includes(id)&&Array.isArray(a)&&a.every(n=>Number.isInteger(n)&&n>=0&&n<byId[id].options.length))&&
+ Number.isFinite(s.started)&&(!s.deadline||Number.isFinite(s.deadline));
+}
+session=storageRead(KEY);
+if(session){
+ const revision=session.bankRevision||1;
+ if(BANKS[revision]){byId=session.questions||BANKS[revision];session.bankRevision=revision}
+ else session=null;
+}
+if(!validSession(session))session=null;
+if(!session)byId=BANKS[3];
+history=storageRead(HISTORY_KEY); if(!Array.isArray(history))history=[];
+history=history.filter(h=>h&&typeof h.label==='string'&&Number.isFinite(h.percent)&&Number.isFinite(h.at)&&Number.isFinite(h.total)&&Number.isFinite(h.correct));
+storageStatus();
+function save(){if(session)storageWrite(KEY,session)}
+function shuffle(input){const a=[...input];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function equalSet(a,b){return a.length===b.length&&[...a].sort((x,y)=>x-y).every((v,i)=>v===[...b].sort((x,y)=>x-y)[i])}
+function isCorrect(id){return session.answers[id]!==undefined&&equalSet(session.answers[id],byId[id].correct)}
+function navigationState(id){
+ if(session.answers[id]===undefined)return{className:'unanswered',label:'unanswered',symbol:''};
+ return isCorrect(id)?{className:'nav-correct',label:'correct',symbol:'✓'}:{className:'nav-incorrect',label:'incorrect',symbol:'×'};
+}
+function navigationButton(id,i){
+ const status=navigationState(id),flagged=session.flags.includes(id),current=i===session.position;
+ return `<button data-jump="${i}" class="${status.className}${current?' current':''}${flagged?' flagged':''}" title="Question ${i+1}: ${status.label}${flagged?', flagged':''}" aria-label="Question ${i+1}, ${status.label}${flagged?', flagged':''}" ${current?'aria-current="step"':''}><span>${i+1}</span>${status.symbol?`<span class="nav-mark" aria-hidden="true">${status.symbol}</span>`:''}</button>`;
+}
+function stats(){const total=session.ids.length, answered=session.ids.filter(id=>session.answers[id]!==undefined).length,correct=session.ids.filter(isCorrect).length;return{total,answered,correct,percent:Math.round(correct/total*100),missed:total-correct,unanswered:total-answered}}
+function refs(q){return `<div class="refs">${q.sources.map(k=>`<a href="${esc(SOURCES[k][1])}" target="_blank" rel="noopener noreferrer">${esc(SOURCES[k][0])} ↗</a>`).join('')}</div>`}
+function highlight(code){
+ const re=/(#[^\n]*|"(?:\\.|[^"\\])*"|\$[A-Za-z_]\w*|\b(?:query|mutation|fragment|on|true|false|null|AND|OR|EQ|CONTAINS|NCONTAINS|String|Boolean|Int)\b)/g;
+ let out='',last=0;for(const m of code.matchAll(re)){out+=esc(code.slice(last,m.index));let cls=m[0].startsWith('#')?'comment':m[0].startsWith('"')?'string':m[0].startsWith('$')?'var':'key';out+=`<span class="tok-${cls}">${esc(m[0])}</span>`;last=m.index+m[0].length}return out+esc(code.slice(last));
+}
+function codeView(q){return q.code?`<pre class="code-block" tabindex="0" aria-label="Code or response to interpret"><code>${highlight(q.code)}</code></pre>`:''}
+function focusMain(){main.focus();window.scrollTo({top:0,behavior:'instant'})}
+function announce(message){$('#live').textContent=message}
+function ask(title,text,label,fn){$('#dialog-title').textContent=title;$('#dialog-text').textContent=text;$('#dialog-confirm').textContent=label;$('#dialog-confirm').onclick=()=>{$('#confirm-dialog').close();fn()};$('#confirm-dialog').showModal()}
+$('#dialog-cancel').onclick=()=>$('#confirm-dialog').close();
+$('#home-button').onclick=()=>{save();renderSetup();focusMain()};
+function renderSetup(){
+ screen='setup';
+ main.innerHTML=`
+ <section class="hero"><div><div class="eyebrow">Understand the query. Know the platform.</div><h1>Your next step<br>toward XM Cloud.</h1><p class="lead">Read real-shaped GraphQL. Practice the developer foundations. Learn why each answer is right, then go again.</p><div class="tags"><span class="pill">Instant explanations</span><span class="pill">Unlimited retakes</span><span class="pill">No account required</span></div></div>
+ <div class="hero-code" aria-hidden="true"><div class="code-heading"><span>QUERY / READ THE SHAPE</span><span>● ● ●</span></div><pre><code>${highlight(`query GetPage($path: String!) {
+  page: item(path: $path, language: "en") {
+    name
+    heading: field(name: "Title") {
+      value
+    }
+  }
+}`)}</code></pre><p class="note">Trace the response → data.page.heading.value</p></div></section>
+ <div class="stats"><div class="stat"><strong>50</strong><span>Questions in the weighted mock</span></div><div class="stat"><strong>36</strong><span>Separate GraphQL drill questions</span></div><div class="stat"><strong>8</strong><span>Competencies with your supplied weights</span></div></div><div class="actions" style="margin-bottom:24px"><button id="setup-primer">Learn GraphQL first</button><button id="setup-history">Review quiz history</button></div>
+ ${session?`<div class="resume"><div><strong>${session.finished?'Your last result is ready.':'Pick up where you left off.'}</strong><div class="session-meta">${esc(session.label)} · ${stats().answered} of ${session.ids.length} submitted${session.finished?` · ${stats().percent}%`:''}</div>${session.bankRevision<3?'<small>This saved attempt keeps its original questions and topic mix. Start a new weighted mock below for the 50-question blueprint.</small>':''}</div><button id="resume" class="dark">${session.finished?'View result':'Resume practice'} →</button></div>`:''}
+ <div class="setup-grid"><section class="panel"><div class="eyebrow">01 / Set your session</div><h2>Make this practice yours.</h2>
+ <div class="control-row"><label class="control">Focus<select id="scope"><option value="weighted">Weighted mock · 50 questions</option><option value="all">Entire learning bank</option><option value="graphql">GraphQL only</option><option value="foundations">XM Cloud foundations only</option>${topics.filter(t=>t!==G).map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('')}</select></label>
+ <label class="control">Question count<select id="count"><option value="all">Entire selected bank</option><option value="50">Up to 50 questions</option><option value="20">Up to 20 questions</option><option value="10">Up to 10 questions</option></select></label></div>
+ <div class="control-row"><label class="control">Time limit<select id="duration"><option value="0">Untimed · learn at your pace</option><option value="30">30 minutes</option><option value="60">60 minutes</option><option value="100" selected>100 minutes</option><option value="144">144 minutes</option></select></label><div><label class="control" style="margin-bottom:10px">Practice target</label><strong>80%</strong><div><small>A study target, not an official pass guarantee.</small></div></div></div>
+ <p class="scope-note"><strong>Revised challenge bank:</strong> closer alternatives, multi-step query interpretation, and practical troubleshooting. Original practice material; difficulty is not calibrated against the live certification exam.</p>
+ <p class="scope-note" id="session-note"></p>
+ <button class="primary" id="start">Start practice →</button>
+ <p style="margin-top:14px;margin-bottom:0"><small>Questions and choices shuffle each attempt. Progress stays in this browser when storage is available.</small></p>
+ <details><summary>How scoring and retakes work</summary><ul class="checklist"><li>Choose your answer, then select <strong>Check answer</strong>. Correct answers and explanations appear immediately.</li><li>One point per question. For multiple-answer questions, select exactly the stated number; all correct selections are required. No partial credit or negative marks.</li><li>Submitted answers lock for the attempt. You can navigate, flag questions, and review explanations.</li><li>Unsubmitted questions count as incorrect if you finish early. Selecting an option without checking it does not submit it.</li><li>Retakes reset answers and shuffle order. You can retry just the questions you missed or left unanswered.</li><li>A timed session uses wall-clock time, including time on explanations or with the page closed. It finishes at the deadline when the page is running or next opened.</li></ul></details>
+ </section><aside class="panel"><div class="eyebrow">02 / Weighted mock blueprint</div><h2>50 questions. Eight competencies.</h2><ul class="list-clean">${BLUEPRINT.map((b,i)=>`<li><span class="tiny-num">${b.count}</span>${i+1}. ${esc(b.name)} <small>· ${b.count*2}%</small></li>`).join('')}</ul><p class="scope-note">These counts follow the screenshot you supplied. GraphQL is covered within APIs where relevant; the separate 36-question drill is extra study, not a ninth weighted competency.</p><p><small>The foundation pool currently contains exactly 50 questions. Repeated weighted mocks reuse these questions with shuffled order and choices.</small></p></aside></div>
+ <div class="notice"><strong>Scope & version note.</strong> This is an independent learning exam, not a replica of Sitecore’s certification or a verified current exam blueprint. The weighted mock follows your supplied 50-question split (6/8/7/7/5/5/5/7), not an independently verified current certification blueprint. Current documentation calls XM Cloud <strong>SitecoreAI</strong> and Pages <strong>Page builder</strong>. Older JSS/Headless Services references support established concepts; verify SDK-specific instructions against your course version. Sample paths, IDs and template names are fictional. No queries are sent to Sitecore.</div>
+ <details class="panel sources"><summary>References & a quick way to read GraphQL</summary><p style="margin-top:16px">First identify the endpoint and operation, then the root field. Read arguments in parentheses, selected fields in braces, aliases before colons, and variables beginning with $. Trace nested results, type conditions, and pagination before deciding what a query returns.</p><p>Question explanations link directly to the relevant reference. Snippets labeled as fragments or containing comments in place of arguments are interpretation exercises, not ready-to-run queries.</p><ul>${Object.values(SOURCES).map(([title,url])=>`<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a></li>`).join('')}</ul></details>
+ <section style="margin-top:28px"><div class="section-title"><h2>Saved practice</h2><button id="all-history">Open all history (${history.length})</button></div><p class="muted">Full attempts now retain your selected answers, explanations, and question definitions. Open history to review failures, retake a quiz, and compare scores.</p>${history.slice(0,3).map(h=>`<div class="history-row"><span>${esc(new Date(h.at).toLocaleString())} · ${esc(h.label)}</span><strong>${h.correct}/${h.total} · ${h.percent}%</strong></div>`).join('')}</section>`;
+ $('#setup-primer').onclick=()=>{renderPrimer();focusMain()};
+ $('#setup-history').onclick=$('#all-history').onclick=()=>{renderHistory();focusMain()};
+ $('#scope').onchange=updateSessionNote;$('#count').onchange=updateSessionNote;$('#duration').onchange=updateSessionNote;updateSessionNote();
+ $('#start').onclick=()=>{
+  const scope=$('#scope').value,pool=poolFor(scope),count=$('#count').value==='all'?pool.length:Math.min(+$('#count').value,pool.length),minutes=+$('#duration').value;
+  const begin=()=>startSession(scope==='weighted'?selectWeightedExam():shuffle(pool.map(q=>q.id)).slice(0,count),`${scope==='weighted'?'Weighted mock':scope==='all'?'Entire learning bank':scope==='graphql'?'GraphQL':scope==='foundations'?'XM Cloud foundations':scope} · ${scope==='weighted'?50:count} questions`,minutes,{kind:scope==='weighted'?'weighted':scope==='graphql'?'graphql':'custom'});
+  if(session&&!session.finished)ask('Start a new attempt?','This replaces your current saved attempt. Completed history is retained.','Start new attempt',begin);else begin();
+ };
+ if($('#resume'))$('#resume').onclick=()=>{if(!expire())session.finished?renderResults():renderExam();focusMain()};
+ if($('#clear-history'))$('#clear-history').onclick=()=>ask('Clear practice history?','This removes completed-attempt summaries from this browser. Your current saved attempt remains.','Clear history',()=>{history=[];storageWrite(HISTORY_KEY,history);renderSetup()});
+}
+function poolFor(scope){return BANK.filter(q=>(scope==='weighted'?BLUEPRINT.some(b=>b.topic===q.topic):scope==='all')||(scope==='graphql'?q.topic===G:scope==='foundations'?q.topic!==G:q.topic===scope))}
+function updateSessionNote(){const scope=$('#scope').value,weighted=scope==='weighted';$('#count').disabled=weighted;const count=$('#count').value,pool=poolFor(scope),n=weighted?50:count==='all'?pool.length:Math.min(+count,pool.length);$('#session-note').textContent=weighted?'50 questions: 6 architecture, 8 deployment, 7 layouts, 7 serialization, 5 APIs, 5 Pages, 5 security, 7 modeling. Immediate feedback stays on.':`${n} questions selected${n<pool.length?' randomly from '+pool.length:''}. This drill does not use the exam weights.`;}
+
+function startSession(ids,label,minutes=0,config={}){
+ if(session?.finished)archiveAttempt(session);
+ byId=config.questions||BANKS[3];
+ session={version:VERSION,bankRevision:3,uid:Date.now()+'-'+Math.random().toString(36).slice(2),ids:shuffle(ids),label,kind:config.kind||'custom',parentUid:config.parentUid||null,position:0,answers:{},drafts:{},flags:[],order:{},started:Date.now(),deadline:minutes?Date.now()+minutes*60000:null,finished:false};
+ session.questions=Object.fromEntries(session.ids.map(id=>[id,JSON.parse(JSON.stringify(byId[id]))]));byId=session.questions;session.setKey=signature(session);
+ for(const id of session.ids)session.order[id]=shuffle(byId[id].options.map((_,i)=>i));
+ save();renderExam();focusMain();
+}
+function renderExam(){
+ screen='exam';const s=stats(),q=byId[session.ids[session.position]],answered=session.answers[q.id]!==undefined,selected=answered?session.answers[q.id]:(session.drafts[q.id]||[]);
+ main.innerHTML=`<div class="exam-layout"><aside class="sidebar"><div class="panel"><div class="eyebrow">Your session</div><strong>${esc(session.label)}</strong><div class="session-meta">${s.answered} of ${s.total} submitted</div><div class="progress" role="progressbar" aria-label="Questions submitted" aria-valuemin="0" aria-valuemax="${s.total}" aria-valuenow="${s.answered}"><span style="width:${s.answered/s.total*100}%"></span></div><div id="clock" class="timer"></div><details id="question-map" ${innerWidth>680?'open':''}><summary style="font-size:13px">Question navigator</summary><nav class="map" aria-label="Questions">${session.ids.map(navigationButton).join('')}</nav><p class="legend">Green ✓ = correct · Red × = incorrect<br>White = unanswered · Gold dot = flagged<br>Outline = current question</p></details><button id="question-primer" style="width:100%;margin-top:15px">GraphQL primer / glossary</button><button id="finish" style="width:100%;margin-top:15px">Finish & see score</button><p class="legend" style="margin:12px 0 0">Answers lock when checked. Your progress is saved automatically when storage is available.</p></div></aside>
+ <section class="panel question-card"><div class="question-top"><div><span class="pill">${esc(q.topic)}</span> <span class="pill">${q.level}</span></div><button class="textbtn" id="flag" aria-pressed="${session.flags.includes(q.id)}">${session.flags.includes(q.id)?'★ Flagged':'☆ Flag for review'}</button></div>
+ ${session.bankRevision<3?'<p class="scope-note">Earlier question bank · This saved attempt retains its original topic mix. Start a new weighted mock from Study desk to use the 50-question blueprint.</p>':''}<div class="question-id">QUESTION ${session.position+1} OF ${s.total} · ${q.id}</div><h2 class="question-stem" id="stem" tabindex="-1">${esc(q.prompt)}</h2>${codeView(q)}
+ <fieldset ${answered?'disabled':''}><legend>${q.correct.length>1?`Select exactly ${q.correct.length} answers.`:'Select one answer.'}</legend><div class="options">${session.order[q.id].map((oi,i)=>{const correct=answered&&q.correct.includes(oi),wrong=answered&&selected.includes(oi)&&!q.correct.includes(oi);return `<label class="option ${correct?'correct':wrong?'wrong':''}"><input type="${q.correct.length>1?'checkbox':'radio'}" name="answer" value="${oi}" ${selected.includes(oi)?'checked':''}><span class="letter">${String.fromCharCode(65+i)}</span><span>${esc(q.options[oi])}${answered?`<span class="answer-tag">${correct?(selected.includes(oi)?'✓ Correct · You selected this':'✓ Correct answer · Not selected'):wrong?'✕ Your selection':''}</span>`:''}</span></label>`}).join('')}</div></fieldset>
+ ${answered?`<section class="feedback ${isCorrect(q.id)?'':'miss'}" id="feedback" tabindex="-1"><h3>${isCorrect(q.id)?'✓ Correct.':'Let’s work through it.'}</h3><p><strong>Correct answer${q.correct.length>1?'s':''}:</strong> ${q.correct.map(i=>esc(q.options[i])).join(' • ')}</p><p>${esc(q.explanation)}</p>${refs(q)}</section>`:''}
+ <div class="question-actions"><button id="prev" ${session.position===0?'disabled':''}>← Previous</button><div class="actions">${!answered?`<button id="check" class="primary" disabled>Check answer</button>`:''}<button id="next" class="${answered?'primary':''}">${session.position===s.total-1?'Finish & see score':answered?'Next question →':'Skip for now →'}</button></div></div></section></div>`;
+ $('[data-jump]');document.querySelectorAll('[data-jump]').forEach(b=>b.onclick=()=>go(+b.dataset.jump));
+ $('#flag').onclick=()=>{session.flags=session.flags.includes(q.id)?session.flags.filter(id=>id!==q.id):[...session.flags,q.id];save();renderExam();$('#flag').focus()};
+ $('#prev').onclick=()=>go(session.position-1);
+ $('#next').onclick=()=>session.position===s.total-1?requestFinish():go(session.position+1);
+ $('#finish').onclick=requestFinish;$('#question-primer').onclick=()=>{save();renderPrimer();focusMain()};
+ if(!answered){
+  document.querySelectorAll('input[name=answer]').forEach(el=>el.onchange=()=>{session.drafts[q.id]=[...document.querySelectorAll('input[name=answer]:checked')].map(el=>+el.value);save();updateCheck(q)});
+  updateCheck(q);
+  $('#check').onclick=()=>{if(expire())return;const a=session.drafts[q.id]||[];if(a.length!==q.correct.length)return;session.answers[q.id]=[...a];save();renderExam();$('#feedback').focus();announce(isCorrect(q.id)?'Correct. Explanation is available.':'Incorrect. Correct answer and explanation are available.')};
+ }
+ updateClock();
+}
+function updateCheck(q){$('#check').disabled=(session.drafts[q.id]||[]).length!==q.correct.length}
+function go(index){if(expire())return;session.position=index;save();renderExam();$('#stem').focus();window.scrollTo({top:0,behavior:'instant'})}
+function requestFinish(){
+ if(expire())return;const s=stats();
+ ask('Finish this attempt?',`${s.answered} of ${s.total} questions submitted. ${s.unanswered?`${s.unanswered} unsubmitted question${s.unanswered===1?'':'s'} will count as incorrect, including any selections you have not checked.`:'Your final score and topic breakdown are ready.'}`,'Finish attempt',()=>finish('manual'));
+}
+function finish(reason){
+ if(!session||session.finished)return;
+ session.finished=true;session.ended=Date.now();session.finishReason=reason;const s=stats();
+ archiveAttempt(session);
+ save();reviewFilter='missed';if($('#confirm-dialog').open)$('#confirm-dialog').close();renderResults();focusMain();announce(reason==='timer'?'Time is up. Your final score is ready.':'Your final score is ready.');
+}
+function expire(){if(session&&!session.finished&&session.deadline&&Date.now()>=session.deadline){finish('timer');return true}return false}
+function updateClock(){const el=$('#clock');if(!el||!session)return;if(!session.deadline){el.innerHTML='<span style="font:13px system-ui;color:var(--muted)">Untimed practice</span>';return}const secs=Math.max(0,Math.ceil((session.deadline-Date.now())/1000));el.textContent=`${String(Math.floor(secs/60)).padStart(2,'0')}:${String(secs%60).padStart(2,'0')} left`;el.classList.toggle('urgent',secs<300)}
+function topicStats(){return topics.map(topic=>{const ids=session.ids.filter(id=>byId[id].topic===topic);return{topic,total:ids.length,correct:ids.filter(isCorrect).length}}).filter(t=>t.total)}
+function renderResults(){
+ screen='results';const s=stats(),breakdown=topicStats(),weak=[...breakdown].filter(t=>t.correct<t.total).sort((a,b)=>a.correct/a.total-b.correct/b.total);
+ main.innerHTML=`<section class="panel"><div class="eyebrow">Session complete / Your results</div><div class="score-hero"><div class="score-ring" style="--score:${s.percent}"><div>${s.percent}%<small>${s.correct} / ${s.total} correct</small></div></div><div><h1 style="font-size:36px;margin-bottom:10px">${s.correct/s.total>=.8?'Practice target reached.':'A clear next step.'}</h1><p class="muted" style="margin-bottom:0">${s.correct/s.total>=.8?'Build consistency with another shuffled attempt.':'Use the explanations below, then retry your missed questions.'}<br>${s.answered} submitted · ${s.unanswered} unanswered · ${session.finishReason==='timer'?'Time limit reached':'Attempt finished'}</p></div></div><div class="actions"><button id="retake" class="primary">Retake these ${s.total} questions ↻</button><button id="retry" ${s.missed?'':'disabled'}>Practice ${s.missed} missed / unanswered</button><button id="new-session">Choose a new session</button><button id="export">Download results</button><button id="results-history">All quiz history</button><button id="results-primer">Study the GraphQL primer</button></div><p style="margin-top:15px;margin-bottom:0"><small>Target: 80% for this practice tool. This score does not predict an official certification result. Retakes reuse this question bank with shuffled order and choices.</small></p></section>
+ <section class="panel learning-section"><h2>Score comparison</h2>${comparisonMarkup(snapshotAttempt(session))}</section><div class="result-grid"><section class="panel"><h2>Performance by topic</h2>${breakdown.map(t=>`<div class="topic-row"><div class="topic-line"><span>${esc(t.topic)}</span><strong>${t.correct}/${t.total} · ${Math.round(t.correct/t.total*100)}%</strong></div><div class="progress"><span style="width:${t.correct/t.total*100}%"></span></div></div>`).join('')}</section><section class="panel"><h2>Where to focus next</h2>${weak.length?`<p class="muted">Start with your lowest-scoring topics from this attempt.</p><ol class="checklist">${weak.slice(0,3).map(t=>`<li><strong>${esc(t.topic)}</strong><br>${t.total-t.correct} missed or unsubmitted. Review the linked explanations, then use a focused session from the study desk.</li>`).join('')}</ol>`:'<p>You answered every question correctly. Try a different selection or explain the query results aloud without looking at the choices.</p>'}<div class="notice">A missed-question drill measures improvement on that subset. Its score is separate from a complete exam attempt.</div><p><small>First checked answers determine the score. Multiple-answer questions use exact-match scoring; skipped questions earn zero points.</small></p></section></div>
+ <section><div class="section-title" id="review-controls"><h2>Answer review</h2><label class="control">Show<select id="review-filter"><option value="missed">Missed & unanswered (${s.missed})</option><option value="flagged">Flagged (${session.flags.length})</option><option value="all">All questions (${s.total})</option></select></label></div><div id="review"></div></section>`;
+ $('#retake').onclick=()=>beginHistoricalRetake(snapshotAttempt(session));
+ $('#retry').onclick=()=>beginHistoricalRetake(snapshotAttempt(session),true);
+ $('#new-session').onclick=()=>{renderSetup();focusMain()};
+ $('#export').onclick=exportResults;$('#results-history').onclick=()=>{renderHistory();focusMain()};$('#results-primer').onclick=()=>{renderPrimer();focusMain()};
+ $('#review-filter').value=reviewFilter;$('#review-filter').onchange=()=>{reviewFilter=$('#review-filter').value;renderReview()};
+ renderReview();
+}
+function renderReview(){
+ const ids=session.ids.filter(id=>reviewFilter==='all'||(reviewFilter==='flagged'?session.flags.includes(id):!isCorrect(id)));
+ $('#review').innerHTML=ids.length?ids.map(id=>{const q=byId[id],a=session.answers[id],correct=isCorrect(id);return `<details class="review-card" ${correct?'':'open'}><summary>${correct?'✓':'○'} ${id} · ${esc(q.topic)} · ${correct?'Correct':a===undefined?'Unanswered':'Incorrect'}${session.flags.includes(id)?' · ★ Flagged':''}</summary><p><strong>${esc(q.prompt)}</strong></p>${codeView(q)}<p><strong>Your submitted answer:</strong> ${a===undefined?'None':a.map(i=>esc(q.options[i])).join(' • ')}</p><p><strong>Correct answer${q.correct.length>1?'s':''}:</strong> ${q.correct.map(i=>esc(q.options[i])).join(' • ')}</p><p>${esc(q.explanation)}</p>${refs(q)}</details>`}).join(''):'<div class="panel"><p style="margin:0">No questions in this review filter. Choose “All questions” to revisit every explanation.</p></div>';
+}
+function exportResults(){
+ const s=stats(),report={title:'XM Cloud Developer Practice Results',completed:new Date(session.ended).toISOString(),session:session.label,score:s,topics:topicStats(),questions:session.ids.map(id=>{const q=byId[id];return{id,topic:q.topic,question:q.prompt,code:q.code,selected:session.answers[id]?.map(i=>q.options[i])||[],correct:q.correct.map(i=>q.options[i]),earned:isCorrect(id)?1:0,explanation:q.explanation,sources:q.sources.map(k=>SOURCES[k][1])}})};
+ const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`xm-cloud-results-${new Date(session.ended).toISOString().slice(0,10)}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);announce('Results downloaded as JSON.');
+}
+setInterval(()=>{if(!expire()&&screen==='exam')updateClock()},1000);
+
+
+// Learning views, weighted selection, and durable full-attempt history.
+const TERMS = [
+ ['GraphQL','A typed language for requesting data from an API. Read a request as a description of the result you want.','queries'],
+ ['Endpoint','The API address receiving the request. Its schema and permissions determine what you can do.','apis'],
+ ['Schema','The API contract: available fields, their types, arguments, and supported operations.','types'],
+ ['Operation / query','One executable request. A query reads data; its operation name is a label for debugging, not a response wrapper.','queries'],
+ ['Mutation','An operation intended for changes. Only use mutations exposed by the target API; Edge Delivery and Preview are read-only.','author'],
+ ['Subscription','An operation for ongoing event results when an API supports it. Do not assume a Sitecore endpoint supports subscriptions.','types'],
+ ['Root field / entry point','The first field inside an operation, such as item, layout, search, or site on the relevant Edge schema.','schema'],
+ ['Field','A requested property. A GraphQL field such as name is different from a named Sitecore content field such as Title.','schema'],
+ ['Selection set / braces { }','The fields requested at one object level. Indentation helps you follow which object owns each selection.','queries'],
+ ['Argument / parentheses ( )','An input to a field: path: "/about" or language: "en". Arguments influence selection; they do not add response keys.','queries'],
+ ['Alias / colon :','A response-key nickname: heading: field(name: "Title"). The result key is heading. It does not rename stored content.','queries'],
+ ['Variable / $','A named input declared in the operation, then supplied separately. JSON variable keys omit the $ prefix.','queries'],
+ ['Default / =','A fallback for an omitted input. A default does not replace an explicitly supplied null.','types'],
+ ['Scalar / leaf','One simple value such as a string or number. Select a scalar directly; it has no nested selection set.','types'],
+ ['Object / list','An object has selectable fields. A list contains multiple values; check the schema rather than guessing cardinality from braces.','types'],
+ ['String, Int, Boolean, ID','Common scalar types: text, integer, true/false, and identifier. Use the exact type required by the endpoint.','types'],
+ ['Enum','One value from a defined set. In GraphQL, EQ is an enum value and is normally written without string quotes.','types'],
+ ['Non-null / !','A value cannot be null. String! allows an empty string unless another rule forbids it. Non-null does not mean an item exists.','types'],
+ ['List modifiers / [T!]!','The outer ! forbids a null list; the inner ! forbids null entries. An empty list can still be valid.','types'],
+ ['Named fragment / ...Name','A reusable field selection. It shares the selection instructions, not the returned values or an extra response wrapper.','queries'],
+ ['Inline fragment / ... on Type','A conditional selection for a matching runtime type. A valid fragment that does not match omits its selected fields.','types'],
+ ['Projected template type','A GraphQL type derived from Sitecore template definitions. Example template names are not universal across projects.','schema'],
+ ['Directive / @include, @skip','A conditional selection instruction. Include needs true; skip needs false for a field to remain selected. Validation still applies.','spec'],
+ ['Resolver / execution','The server behavior that produces a field value after the request has passed validation.','response'],
+ ['Validation / coercion','Checking that a document fits the schema, and that input values fit the declared types. Failures can prevent execution.','validation'],
+ ['data, errors, error path','data contains results; errors describes problems. A field error can coexist with partial data. Error paths follow response keys, including aliases.','response'],
+ ['null / omitted','null means a key has a null value. Omitted means the key is absent, for example because a directive excluded it.','response'],
+ ['Item ID / GUID / path','A Sitecore item can be identified by its GUID or CMS tree path. A public route path is a different kind of address.','schema'],
+ ['layout / rendered','layout selects page data using site, route path, and language; rendered contains Layout Service JSON for the front end.','hd'],
+ ['value / jsonValue','value is a field value representation. jsonValue provides a representation intended for Sitecore SDK field helpers, including complex fields.','hd'],
+ ['parent / children / ancestors','Relationships in the item tree: immediate parent, immediate children, or ancestors. Selecting children does not recurse automatically.','hd'],
+ ['where / AND / OR','Filter input and Boolean combinations: every AND condition must match; at least one OR condition must match.','examples'],
+ ['_parent / _path / _templates','Special search fields: immediate-parent ID, hierarchy IDs, and template IDs including inherited templates.','schema'],
+ ['EQ / CONTAINS / NCONTAINS','Equality, contains, and does-not-contain operators. Interpretation depends on the field and endpoint; text tokenization can differ.','differences'],
+ ['first / results / total','A maximum page size, the returned page of records, and the matching count. A requested limit does not guarantee that many records.','examples'],
+ ['Cursor / after / pageInfo','Cursor = continuation token. Pass endCursor as after for the same filter; stop when hasNext is false. Treat tokens as opaque.','examples'],
+ ['Query complexity','A measure of requested work. Deeply nested lists can be expensive; use bounded selections and pagination.','best'],
+ ['Preview / Delivery / Authoring','Preview reads drafts from CM; Delivery reads published content from Edge; the authoring API exposes supported content changes.','apis']
+];
+
+function latestQuestions(){return Object.fromEntries(BANK.map(q=>[q.id,q]))}
+function questionsFor(attempt){return attempt.questions||BANKS[attempt.bankRevision||1]||BANKS[3]}
+function attemptStats(attempt){
+ const qs=questionsFor(attempt),total=attempt.ids.length;
+ const answered=attempt.ids.filter(id=>attempt.answers[id]!==undefined).length;
+ const correct=attempt.ids.filter(id=>attempt.answers[id]!==undefined&&equalSet(attempt.answers[id],qs[id].correct)).length;
+ return{total,answered,correct,percent:Math.round(correct/total*100),missed:total-correct,unanswered:total-answered};
+}
+function signature(attempt){
+ const qs=questionsFor(attempt),text=JSON.stringify([...attempt.ids].sort().map(id=>[id,qs[id].prompt,qs[id].code,qs[id].options,qs[id].correct]));
+ let h=2166136261;for(let i=0;i<text.length;i++){h^=text.charCodeAt(i);h=Math.imul(h,16777619)}return `${attempt.ids.length}-${(h>>>0).toString(16)}`;
+}
+function snapshotAttempt(attempt){
+ const copy=JSON.parse(JSON.stringify(attempt)),qs=questionsFor(attempt);
+ copy.questions=Object.fromEntries(copy.ids.map(id=>[id,JSON.parse(JSON.stringify(qs[id]))]));
+ copy.uid=copy.uid||`recovered-${copy.started}`;copy.setKey=signature(copy);return copy;
+}
+function archiveAttempt(attempt){
+ if(!attempt||!attempt.finished)return;
+ const copy=snapshotAttempt(attempt),s=attemptStats(copy);
+ const record={uid:copy.uid,at:copy.ended||copy.started,label:copy.label,correct:s.correct,total:s.total,percent:s.percent,attempt:copy};
+ const index=history.findIndex(h=>h.uid===record.uid||(!h.uid&&h.at===record.at&&h.label===record.label));
+ if(index>=0)history[index]=record;else history.unshift(record);
+ history.sort((a,b)=>b.at-a.at);storageWrite(HISTORY_KEY,history);
+}
+function selectWeightedExam(){
+ return BLUEPRINT.flatMap(b=>{const candidates=BANK.filter(q=>q.topic===b.topic);if(candidates.length<b.count)throw new Error(`Insufficient questions for ${b.topic}`);return shuffle(candidates).slice(0,b.count).map(q=>q.id)});
+}
+function previousComparable(attempt){
+ const key=signature(attempt);return history.filter(h=>h.attempt&&h.uid!==attempt.uid&&h.at<=(attempt.ended||Date.now())&&signature(h.attempt)===key).sort((a,b)=>b.at-a.at)[0];
+}
+function comparisonMarkup(attempt){
+ const previous=previousComparable(attempt);if(!previous)return '<p class="muted">Complete another attempt on these same questions to compare like-for-like scores.</p>';
+ const now=attemptStats(attempt),delta=now.percent-previous.percent;
+ return `<p><strong>${delta>0?'+':''}${delta} percentage points</strong> versus your previous attempt on the same question set (${previous.percent}% → ${now.percent}%).</p><small>Identical questions and answer definitions; order may differ. Timed and untimed attempts can appear in this comparison.</small>`;
+}
+function beginHistoricalRetake(attempt,missedOnly=false){
+ const qs=questionsFor(attempt),ids=attempt.ids.filter(id=>!missedOnly||attempt.answers[id]===undefined||!equalSet(attempt.answers[id],qs[id].correct));
+ if(!ids.length)return;
+ const begin=()=>startSession(ids,missedOnly?`Missed-question drill · ${ids.length} questions`:attempt.label,0,{questions:qs,parentUid:attempt.uid,kind:missedOnly?'missed':attempt.kind||'custom'});
+ if(session&&!session.finished)ask('Start this retake?','Your active attempt will be replaced. Completed attempts remain in history.','Start retake',begin);else begin();
+}
+
+function installStudyNavigation(){
+ const links=$('.toplinks');if(links&&!$('#primer-nav'))links.insertAdjacentHTML('afterbegin','<button class="textbtn" id="primer-nav">GraphQL primer</button><button class="textbtn" id="history-nav">Quiz history</button>');
+ if($('#primer-nav'))$('#primer-nav').onclick=()=>{save();renderPrimer();focusMain()};
+ if($('#history-nav'))$('#history-nav').onclick=()=>{save();renderHistory();focusMain()};
+}
+function primerCard(title,body){return `<section class="panel learning-section"><h2>${title}</h2>${body}</section>`}
+function renderPrimer(){
+ screen='primer';
+ main.innerHTML=`<div class="eyebrow">Learn first / GraphQL primer</div><h1>Learn to read the shape.</h1><p class="lead">You do not have to memorize the whole language. Learn the symbols, trace the nesting, and separate what a query requests from what the server actually returns.</p><div class="actions"><button id="primer-back">← Study desk</button>${session&&!session.finished?'<button id="primer-resume">Resume saved quiz</button>':''}<button id="primer-drill" class="primary">Start GraphQL practice</button><a class="button" href="#glossary">Find a term</a></div><p class="scope-note">The worked examples below use fictional Sitecore content. They are local learning examples, not requests to your Sitecore environment. An active quiz timer continues while you read.</p>
+ <nav class="lesson-nav" aria-label="Primer contents"><a href="#anatomy">1. Anatomy</a><a href="#trace">2. Trace a response</a><a href="#types">3. Types & conditions</a><a href="#filter">4. Search & pagination</a><a href="#troubles">5. Diagnose errors</a><a href="#glossary">6. Glossary</a><a href="#checks">7. Try it</a></nav>
+ <div id="anatomy">${primerCard('1. Start with the punctuation',`<p>Click a line for its meaning. The numbered labels are teaching annotations, not part of the query.</p><div class="anatomy-lines">${[
+ ['query ReadHome($path: String!, $lang: String! = "en") {','query reads data. ReadHome names this operation. $path and $lang are inputs. String! rejects null; lang has an omission default.'],
+ ['  page: item(path: $path, language: $lang) {','item is the root field. Arguments choose an item and language. page is an alias, so the response uses page as its key.'],
+ ['    name','Request a scalar directly: no braces or value beneath name.'],
+ ['    heading: field(name: "Title") {','Request the content field named Title. heading is its response alias; the Title argument does not become a response key.'],
+ ['      value','Request the value inside that field object.'],
+ ['    }','Close the content-field selection. You are back at the page item level.'],
+ ['  }','Close the item selection.'],
+ ['}','Close the operation.']
+ ].map(([line,note],i)=>`<button class="anatomy-line" data-anatomy="${i}" data-note="${esc(note)}"><span>${i+1}</span><code>${esc(line)}</code></button>`).join('')}</div><p id="anatomy-note" class="notice" aria-live="polite">Select a line above.</p><p>Braces choose output fields. Parentheses supply inputs. A colon can declare an argument, a variable type, or an alias: its location tells you which.</p>` )}</div>
+ <div id="trace">${primerCard('2. Follow aliases into the response',`<div class="learn-grid"><div><h3>Variables JSON</h3>${codeView({code:'{"path":"/sitecore/content/Acme/Travel/Home"}'})}<p>There is no $ in the JSON key. We omitted lang, so the query default supplies en.</p></div><div><h3>One possible successful response</h3>${codeView({code:'{\n  "data": {\n    "page": {\n      "name": "Home",\n      "heading": { "value": "Plan your trip" }\n    }\n  }\n}'})}</div></div><p><strong>Read the title at data.page.heading.value.</strong> ReadHome, item, field, and Title do not appear as extra wrappers in this example. Only the selected aliases and fields shape this response.</p><p>For a list, include the element index: data.item.children.results[0].name. A selected connection can return fewer records than requested.</p>` )}</div>
+ <div id="types">${primerCard('3. Types, defaults, fragments, directives',`<dl class="lesson-dl"><dt>Omitted versus explicit null</dt><dd>For $lang: String! = "en", leaving lang out uses en. Supplying {"lang":null} fails. Empty text is still a string; ! alone does not reject it.</dd><dt>Scalar versus object</dt><dd>name is a leaf. field(...) is an object, so select a subfield such as value. name { value } is invalid when name is a String.</dd><dt>Reusable selections</dt><dd>fragment Identity on Item { id name } lets ...Identity request the same fields at several locations. Each object has its own values.</dd><dt>Type conditions</dt><dd>... on Article { headline { value } } applies only to a matching type. A valid nonmatching condition omits headline. An unknown or impossible type condition can fail validation.</dd><dt>Conditional fields</dt><dd>@include(if: true) permits a selection; @skip(if: true) excludes it. If both occur, inclusion requires include=true and skip=false. An invalid field still fails validation when skipped.</dd><dt>Lists</dt><dd>[String!]! allows an empty list, prohibits a null list, and prohibits null entries. The two exclamation marks act at different levels.</dd></dl>` )}</div>
+ <div id="filter">${primerCard('4. Distinguish filters from returned fields',`${codeView({code:'query {\n  search(\n    where: { AND: [\n      { name: "_parent", value: "11111111111111111111111111111111", operator: EQ }\n      { name: "_language", value: "en", operator: EQ }\n    ] }\n    first: 5\n  ) {\n    total\n    results { id name }\n    pageInfo { endCursor hasNext }\n  }\n}'})}<ol class="checklist"><li><strong>where is input:</strong> both conditions must match. This selects English records directly under the specified parent.</li><li><strong>_parent is one level:</strong> _path with a branch-root ID instead tests branch membership, which may include that root and deeper descendants. _templates includes inherited templates.</li><li><strong>results is output:</strong> each result requests only id and name here. first:5 is a cap, not a promise of five matches.</li><li><strong>total describes the matching set:</strong> it can exceed the number returned in this page.</li><li><strong>Continue the same search:</strong> if hasNext is true, reuse endCursor as after on the next request, keeping the filter. Stop when hasNext is false. Do not decode or increment the cursor yourself.</li></ol><p>EQ and CONTAINS on text can behave differently between Preview and Delivery because of indexing/tokenization. A search filter is not an automatic full-site search implementation.</p>` )}</div>
+ <div id="troubles">${primerCard('5. Diagnose in the right order',`<ol class="checklist"><li><strong>Endpoint:</strong> Preview can read drafts from CM; Delivery reads published Edge content. Use the authoring API for supported mutations.</li><li><strong>Validation:</strong> unknown fields, conflicting selections, wrong types, or scalar sub-selections can prevent execution. Aliases fix response-key conflicts; they do not fix type errors.</li><li><strong>Execution:</strong> data plus errors can mean some fields worked and another failed. Follow the error path through aliases. Do not interpret every null as an empty authored value.</li><li><strong>Availability:</strong> item:null without errors warrants checking item identity, language, publication, and environment.</li><li><strong>Front-end freshness:</strong> new data in Delivery with stale generated HTML points to the application’s cache/build/revalidation path.</li></ol><p><strong>Before answering a question:</strong> state the endpoint, inputs, selected output, nesting depth, and conditions. Then eliminate options that add behavior the query never requested.</p>` )}</div>
+ <section class="panel learning-section" id="glossary"><h2>6. A glossary for this question bank</h2><label class="control">Find a term<input type="search" id="term-search" placeholder="Try alias, cursor, scalar, _path…"></label><div id="term-list">${TERMS.map(([term,meaning,source])=>`<article class="term-row" data-term="${esc((term+' '+meaning).toLowerCase())}"><h3>${esc(term)}</h3><p>${esc(meaning)}</p><a href="${esc(SOURCES[source][1])}" target="_blank" rel="noopener noreferrer">Read the reference ↗</a></article>`).join('')}</div><p id="no-terms" class="hidden">No matching terms. Try a shorter word.</p></section>
+ <section class="panel learning-section" id="checks"><h2>7. Try the reading steps</h2><p>These six checks do not affect quiz scores or history. Each answer explains the reasoning.</p>${[
+ ['query Q { card: item(...) { title: field(...) { value } } } — where is the value?',['data.card.title.value','data.Q.item.field.value'],'The aliases card and title define the keys. The operation name Q does not wrap data.'],
+ ['$lang: String! = "en" with {"lang":null}: use en or reject?',['Reject the explicit null','Use en because a default exists'],'Omission uses a default. Explicit null violates the non-null input type.'],
+ ['first:5 returns three results. Must the response be invalid?',['No; five is the maximum','Yes; the server owes five records'],'There may be fewer matching records or fewer records remaining on this page.'],
+ ['_parent equals Home’s GUID: direct children or every descendant?',['Direct children','Every descendant'],'For branch membership, examine the _path condition instead.'],
+ ['A valid Article fragment does not match the returned runtime type. Is its headline key absent or necessarily null?',['Absent','Necessarily present as null'],'The fragment’s fields do not participate for a nonmatching runtime type.'],
+ ['The response includes useful data and errors with a field path. Did validation necessarily prevent all execution?',['No; execution can return partial data','Yes; errors always means nothing executed'],'A field-resolution error can coexist with data from successful fields.']
+ ].map(([prompt,options,reason],i)=>`<article class="self-check"><h3>${i+1}. ${esc(prompt)}</h3><div class="actions">${options.map((o,j)=>`<button data-check="${i}" data-choice="${j}">${esc(o)}</button>`).join('')}</div><p id="check-note-${i}" class="notice hidden" aria-live="polite" data-reason="${esc(reason)}"></p></article>`).join('')}</section>
+ <p class="muted">Sources: ${['queries','types','response','schema','examples'].map(k=>`<a href="${esc(SOURCES[k][1])}" target="_blank" rel="noopener noreferrer">${esc(SOURCES[k][0])}</a>`).join(' · ')}. Terminology is taught with original examples; projected Sitecore types vary by project.</p>`;
+ $('#primer-back').onclick=()=>{renderSetup();focusMain()};
+ if($('#primer-resume'))$('#primer-resume').onclick=()=>{if(!expire())renderExam();focusMain()};
+ $('#primer-drill').onclick=()=>{const begin=()=>startSession(BANK.filter(q=>q.topic===G).map(q=>q.id),'GraphQL drill · 36 questions',0,{kind:'graphql'});if(session&&!session.finished)ask('Start a GraphQL drill?','This replaces the active attempt. Completed history remains available.','Start drill',begin);else begin()};
+ document.querySelectorAll('[data-anatomy]').forEach(b=>b.onclick=()=>{$('#anatomy-note').textContent=b.dataset.note});
+ $('#term-search').oninput=()=>{const term=$('#term-search').value.toLowerCase().trim();let visible=0;document.querySelectorAll('[data-term]').forEach(row=>{const match=row.dataset.term.includes(term);row.classList.toggle('hidden',!match);if(match)visible++});$('#no-terms').classList.toggle('hidden',visible>0)};
+ document.querySelectorAll('[data-check]').forEach(b=>b.onclick=()=>{const note=$('#check-note-'+b.dataset.check);note.textContent=(b.dataset.choice==='0'?'Correct. ':'Try the other choice. ')+note.dataset.reason;note.classList.remove('hidden')});
+}
+
+function renderHistory(){
+ screen='history';const detailed=history.filter(h=>h.attempt),weighted=history.filter(h=>h.attempt?.kind==='weighted').sort((a,b)=>a.at-b.at);
+ main.innerHTML=`<div class="eyebrow">Your learning record</div><h1>Quiz history</h1><p class="lead">Review each saved attempt, inspect failed answers, and retake the same questions. Completed quizzes are kept in this browser until you clear its storage.</p><div class="actions"><button id="history-back">← Study desk</button><button id="history-backup" ${history.length?'':'disabled'}>Download history backup</button><label class="button" for="history-import">Restore backup</label><input id="history-import" type="file" accept="application/json,.json" class="hidden"></div><p id="import-status" aria-live="polite"></p><div class="notice">Older versions saved only ten score summaries. Those summaries remain, but their past answer choices cannot be reconstructed. A completed quiz still stored as your current attempt is recovered with full details. New completions save the questions and every submitted answer. History in another browser or a different copy of the file is separate.</div>
+ ${weighted.length>1?`<section class="panel learning-section"><h2>Weighted mock score trend</h2><p class="muted">50-question blueprint · ${weighted.length} completed attempts · score as a percentage. Chronological order; date and score are listed below.</p><div class="score-trend" role="list" aria-label="Weighted mock attempt scores">${weighted.map((h,i)=>`<div role="listitem"><span>${h.percent}%</span><div class="trend-track"><div style="height:${h.percent}%"></div></div><small>${i+1}</small></div>`).join('')}</div><ol class="checklist">${weighted.map(h=>`<li>${esc(new Date(h.at).toLocaleString())}: ${h.correct}/${h.total} (${h.percent}%)</li>`).join('')}</ol></section>`:''}
+ <section class="learning-section"><div class="section-title"><h2>All saved attempts (${history.length})</h2><label class="control">Show<select id="history-filter"><option value="all">All attempts</option><option value="weighted">Weighted mock exams</option><option value="graphql">GraphQL drills</option><option value="detailed">With answer details (${detailed.length})</option><option value="summary">Older summaries only</option></select></label></div><div id="history-list"></div></section>`;
+ $('#history-back').onclick=()=>{renderSetup();focusMain()};$('#history-filter').onchange=renderHistoryRows;renderHistoryRows();
+ $('#history-backup').onclick=()=>downloadJSON({format:'xm-cloud-history',version:1,exported:new Date().toISOString(),history},'xm-cloud-history-backup.json');
+ $('#history-import').onchange=async event=>{try{const file=event.target.files[0];if(!file)return;if(file.size>25000000)throw new Error('This file is too large for a quiz-history backup.');const data=JSON.parse(await file.text());mergeHistoryBackup(data);renderHistory();$('#import-status').textContent='Backup restored. Duplicate attempts were merged.'}catch(error){$('#import-status').textContent='Could not restore backup: '+error.message}};
+}
+function renderHistoryRows(){
+ const filter=$('#history-filter').value,rows=history.filter(h=>filter==='all'||(filter==='detailed'?!!h.attempt:filter==='summary'?!h.attempt:h.attempt?.kind===filter));
+ $('#history-list').innerHTML=rows.length?rows.map(h=>`<article class="panel history-attempt"><div class="section-title"><div><h3>${esc(h.label)}</h3><small>${esc(new Date(h.at).toLocaleString())} · ${h.attempt?'Full answer record':'Score summary only'}</small></div><strong class="history-score">${h.percent}%<small>${h.correct}/${h.total}</small></strong></div>${h.attempt?`${comparisonMarkup(h.attempt)}<div class="actions"><button data-history-view="${esc(h.uid)}">Review answers</button><button data-history-retake="${esc(h.uid)}">Retake same questions</button><button data-history-missed="${esc(h.uid)}" ${h.correct<h.total?'':'disabled'}>Retry missed</button></div>`:'<p class="muted">This older record has no question or answer details. Start a new quiz to create a full record.</p>'}</article>`).join(''):'<p class="panel">No attempts in this view yet. Finish a quiz to add a record.</p>';
+ document.querySelectorAll('[data-history-view]').forEach(b=>b.onclick=()=>{renderHistoryDetail(history.find(h=>h.uid===b.dataset.historyView));focusMain()});
+ document.querySelectorAll('[data-history-retake]').forEach(b=>b.onclick=()=>beginHistoricalRetake(history.find(h=>h.uid===b.dataset.historyRetake).attempt));
+ document.querySelectorAll('[data-history-missed]').forEach(b=>b.onclick=()=>beginHistoricalRetake(history.find(h=>h.uid===b.dataset.historyMissed).attempt,true));
+}
+function historyReviewMarkup(attempt,filter){
+ const qs=questionsFor(attempt),ids=attempt.ids.filter(id=>filter==='all'||attempt.answers[id]===undefined||!equalSet(attempt.answers[id],qs[id].correct));
+ return ids.length?ids.map(id=>{const q=qs[id],a=attempt.answers[id],ok=a!==undefined&&equalSet(a,q.correct);return `<details class="review-card" ${ok?'':'open'}><summary>${ok?'✓':'×'} ${id} · ${esc(q.topic)} · ${ok?'Correct':a===undefined?'Unanswered':'Incorrect'}</summary><h3>${esc(q.prompt)}</h3>${codeView(q)}<ul class="review-choices">${q.options.map((option,i)=>`<li class="${q.correct.includes(i)?'choice-correct':a?.includes(i)?'choice-incorrect':''}">${esc(option)} ${q.correct.includes(i)?'<strong>✓ Correct answer</strong>':''} ${a?.includes(i)?'<strong>• Your selection</strong>':''}</li>`).join('')}</ul>${a===undefined?'<p>No answer was submitted.</p>':''}<p>${esc(q.explanation)}</p>${refs(q)}</details>`}).join(''):'<p class="panel">No missed or unanswered questions in this attempt.</p>';
+}
+function renderHistoryDetail(record){
+ screen='history-detail';const a=record.attempt,s=attemptStats(a);
+ main.innerHTML=`<div class="eyebrow">Saved attempt / Read-only review</div><h1>${s.percent}% · ${s.correct}/${s.total}</h1><p class="lead">${esc(record.label)}</p><p>${esc(new Date(record.at).toLocaleString())} · ${s.unanswered} unanswered</p><div class="panel">${comparisonMarkup(a)}</div><div class="actions learning-section"><button id="history-detail-back">← All history</button><button id="history-detail-retake" class="primary">Retake same questions</button><button id="history-detail-missed" ${s.missed?'':'disabled'}>Retry ${s.missed} missed / unanswered</button><button id="history-detail-export">Download this attempt</button></div><label class="control">Answer review<select id="history-answer-filter"><option value="missed">Missed & unanswered</option><option value="all">All questions</option></select></label><div id="history-answer-list">${historyReviewMarkup(a,'missed')}</div>`;
+ $('#history-detail-back').onclick=()=>{renderHistory();focusMain()};$('#history-detail-retake').onclick=()=>beginHistoricalRetake(a);$('#history-detail-missed').onclick=()=>beginHistoricalRetake(a,true);
+ $('#history-detail-export').onclick=()=>downloadJSON({format:'xm-cloud-history',version:1,history:[record]},'xm-cloud-attempt.json');
+ $('#history-answer-filter').onchange=()=>$('#history-answer-list').innerHTML=historyReviewMarkup(a,$('#history-answer-filter').value);
+}
+function downloadJSON(data,filename){const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function validArchivedRecord(h){
+ if(!h||typeof h.label!=='string'||!Number.isFinite(h.at)||!Number.isFinite(h.percent)||!Number.isFinite(h.correct)||!Number.isFinite(h.total)||h.total<=0||h.correct<0||h.correct>h.total)return false;
+ if(!h.attempt)return true;
+ const a=h.attempt,qs=a.questions;if(!qs||!Array.isArray(a.ids)||!a.ids.length||new Set(a.ids).size!==a.ids.length||!a.finished||!a.answers)return false;
+ return a.ids.every(id=>{const q=qs[id],answer=a.answers[id];return q&&q.id===id&&typeof q.prompt==='string'&&typeof q.topic==='string'&&typeof q.explanation==='string'&&(q.code==null||typeof q.code==='string')&&Array.isArray(q.options)&&q.options.length===4&&q.options.every(o=>typeof o==='string')&&Array.isArray(q.correct)&&q.correct.length>0&&q.correct.length<4&&new Set(q.correct).size===q.correct.length&&q.correct.every(i=>Number.isInteger(i)&&i>=0&&i<4)&&Array.isArray(q.sources)&&q.sources.every(k=>SOURCES[k])&&(answer===undefined||(Array.isArray(answer)&&new Set(answer).size===answer.length&&answer.every(i=>Number.isInteger(i)&&i>=0&&i<4)))});
+}
+function mergeHistoryBackup(data){
+ if(data?.format!=='xm-cloud-history'||data.version!==1||!Array.isArray(data.history)||!data.history.every(validArchivedRecord))throw new Error('Not a valid Practice Studio history backup.');
+ const merged=[...history];for(const raw of data.history){const h=JSON.parse(JSON.stringify(raw));if(h.attempt){const s=attemptStats(h.attempt);h.correct=s.correct;h.total=s.total;h.percent=s.percent;h.uid=h.attempt.uid||h.uid||`import-${h.at}`;h.attempt.uid=h.uid}const i=merged.findIndex(row=>row.uid===h.uid&&h.uid);if(i<0)merged.push(h);else if(h.attempt)merged[i]=h}
+ history=merged.sort((a,b)=>b.at-a.at);storageWrite(HISTORY_KEY,history);
+}
+
+installStudyNavigation();
+if(session?.finished)archiveAttempt(session);
+if(!expire())renderSetup();
+
+</script>
+</body>
+</html>
