@@ -47,8 +47,16 @@ function navigationButton(id,i){
 function stats(){const total=session.ids.length, answered=session.ids.filter(id=>session.answers[id]!==undefined).length,correct=session.ids.filter(isCorrect).length;return{total,answered,correct,percent:Math.round(correct/total*100),missed:total-correct,unanswered:total-answered}}
 function refs(q){return `<div class="refs">${q.sources.map(k=>`<a href="${esc(SOURCES[k][1])}" target="_blank" rel="noopener noreferrer">${esc(SOURCES[k][0])} ↗</a>`).join('')}</div>`}
 function highlight(code){
- const re=/(#[^\n]*|"(?:\\.|[^"\\])*"|\$[A-Za-z_]\w*|\b(?:query|mutation|fragment|on|true|false|null|AND|OR|EQ|CONTAINS|NCONTAINS|String|Boolean|Int)\b)/g;
- let out='',last=0;for(const m of code.matchAll(re)){out+=esc(code.slice(last,m.index));let cls=m[0].startsWith('#')?'comment':m[0].startsWith('"')?'string':m[0].startsWith('$')?'var':'key';out+=`<span class="tok-${cls}">${esc(m[0])}</span>`;last=m.index+m[0].length}return out+esc(code.slice(last));
+ const re=/(#[^\n]*|"(?:\\.|[^"\\])*"|\$[A-Za-z_]\w*|\b(?:query|mutation|subscription|fragment|on|true|false|null|AND|OR|EQ|CONTAINS|NCONTAINS|String|Boolean|Int|Float|ID)\b)/g;
+ let out='',last=0;
+ for(const m of code.matchAll(re)){
+  out+=esc(code.slice(last,m.index));
+  const token=m[0];
+  const cls=token.startsWith('#')?'comment':token.startsWith('"')?'string':token.startsWith('$')?'var':['String','Boolean','Int','Float','ID'].includes(token)?'builtin':['AND','OR','EQ','CONTAINS','NCONTAINS'].includes(token)?'api':'key';
+  out+=`<span class="tok-${cls}">${esc(token)}</span>`;
+  last=m.index+token.length;
+ }
+ return out+esc(code.slice(last));
 }
 function codeView(q){return q.code?`<pre class="code-block" tabindex="0" aria-label="Code or response to interpret"><code>${highlight(q.code)}</code></pre>`:''}
 function focusMain(){main.focus();window.scrollTo({top:0,behavior:'instant'})}
@@ -68,7 +76,7 @@ function renderSetup(){
     }
   }
 }`)}</code></pre><p class="note">Trace the response → data.page.heading.value</p></div></section>
- <div class="stats"><div class="stat"><strong>50</strong><span>Questions in the weighted mock</span></div><div class="stat"><strong>36</strong><span>Separate GraphQL drill questions</span></div><div class="stat"><strong>8</strong><span>Competencies with your supplied weights</span></div></div><div class="actions" style="margin-bottom:24px"><button id="setup-primer">Learn GraphQL first</button><button id="setup-history">Review quiz history</button></div>
+ <div class="stats"><div class="stat"><strong>50</strong><span>Questions in the weighted mock</span></div><div class="stat"><strong>36</strong><span>Separate GraphQL drill questions</span></div><div class="stat"><strong>8</strong><span>Competencies with your supplied weights</span></div></div><div class="actions" style="margin-bottom:24px"><button id="setup-primer">Learn GraphQL first</button><button id="setup-history">Review quiz history</button><a class="button" href="__LAB_URL__">GraphQL game — additional query practice →</a></div>
  ${session?`<div class="resume"><div><strong>${session.finished?'Your last result is ready.':'Pick up where you left off.'}</strong><div class="session-meta">${esc(session.label)} · ${stats().answered} of ${session.ids.length} submitted${session.finished?` · ${stats().percent}%`:''}</div>${session.bankRevision<3?'<small>This saved attempt keeps its original questions and topic mix. Start a new weighted mock below for the 50-question blueprint.</small>':''}</div><button id="resume" class="dark">${session.finished?'View result':'Resume practice'} →</button></div>`:''}
  <div class="setup-grid"><section class="panel"><div class="eyebrow">01 / Set your session</div><h2>Make this practice yours.</h2>
  <div class="control-row"><label class="control">Focus<select id="scope"><option value="weighted">Weighted mock · 50 questions</option><option value="all">Entire learning bank</option><option value="graphql">GraphQL only</option><option value="foundations">XM Cloud foundations only</option>${topics.filter(t=>t!==G).map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('')}</select></label>

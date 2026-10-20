@@ -1,0 +1,43 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
+const root=path.resolve(__dirname,'..');
+const code=require('esbuild').buildSync({entryPoints:[path.join(root,'src/lab/playground.js')],bundle:true,platform:'node',format:'cjs',write:false}).outputFiles[0].text;
+const mod={exports:{}};new Function('module','exports','require',code)(mod,mod.exports,require);
+const {execute,examples}=mod.exports;
+for(const example of examples) assert.ok(!execute(example.query,example.variables).errors,example.title);
+assert.deepEqual(JSON.parse(JSON.stringify(execute(examples[0].query))),{data:{item:{name:'Home'}}});
+assert.equal(execute(examples[2].query,{lang:'fr',showName:false}).data.item.displayName,'Bienvenue');
+assert.equal(execute(examples[2].query,{lang:'fr',showName:false}).data.item.name,undefined);
+assert.ok(execute(examples[2].query,{lang:null}).errors);
+assert.ok(execute('{ item(path:"x"){ madeUp } }').errors);
+assert.ok(execute('{ item(path:"x"){ name { value } } }').errors);
+assert.equal(execute('{ item(path:"missing"){ name } }').data.item,null);
+const first=execute(examples[4].query).data.search;
+assert.equal(first.pageInfo.hasNext,true);
+const next=execute(examples[4].query,{cursor:first.pageInfo.endCursor}).data.search;
+assert.deepEqual(next.results.map(i=>i.name),['About']);assert.equal(next.pageInfo.hasNext,false);
+assert.equal(execute(examples[5].query).data.french.id,'home-fr');
+assert.ok(execute('{ search(first:0){total} }').errors);
+const elements=new Map();
+const element=id=>{if(!elements.has(id))elements.set(id,{value:'',textContent:'',append(){}});return elements.get(id);};
+const browserModule={exports:{}};
+new Function('module','exports','require','document',code)(browserModule,browserModule.exports,require,{getElementById:element,createElement:()=>({})});
+assert.equal(JSON.parse(element('liveResponse').textContent).data.item.name,'Home');
+element('liveQuery').value='{ item(path:"/sitecore/content/Acme/Home",language:"fr"){displayName} }';
+element('liveRun').onclick();
+assert.equal(JSON.parse(element('liveResponse').textContent).data.item.displayName,'Bienvenue');
+element('liveVariables').value='bad JSON';element('liveRun').onclick();
+assert.ok(JSON.parse(element('liveResponse').textContent).errors);
+element('liveReset').onclick();
+assert.equal(JSON.parse(element('liveResponse').textContent).data.item.name,'Home');
+// Prevent exact teaching queries or game requests being copied into the assessment bank.
+const context=vm.createContext({});
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+vm.runInContext(['bank.js','advanced-bank.js','exam-bank.js'].map(n=>read('src/exam/'+n)).join('\n'),context);
+const questions=vm.runInContext('BANK',context);
+const lessons=require('../src/lab/lessons.js').lessons;
+const normalize=s=>String(s||'').replace(/\s+/g,'').toLowerCase();
+for(const question of questions){
+  for(const example of examples) assert.notEqual(normalize(question.code),normalize(example.query),'Copied playground query');
+  for(const lesson of lessons) assert.notEqual(normalize(question.prompt),normalize(lesson.request),'Copied game request');
+}
+console.log('PASS: actual GraphQL execution, defaults, null rejection, validation, aliases, fragments, filtering, pagination, and exact training/assessment duplication guard.');

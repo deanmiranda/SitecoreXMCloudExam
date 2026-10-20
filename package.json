@@ -1,0 +1,22 @@
+{
+  "name": "xm-cloud-practice-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Independent XM Cloud developer exam practice and a hands-on GraphQL lab.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.cjs",
+    "prestart": "npm run build",
+    "start": "node scripts/serve.cjs",
+    "preview": "node scripts/serve.cjs",
+    "test": "npm run build && node tests/exam.test.cjs && node tests/lab.test.cjs && node tests/playground.test.cjs && node tests/server.test.cjs"
+  },
+  "dependencies": {
+    "graphql": "16.14.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

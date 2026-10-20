@@ -1,0 +1,21 @@
+# Generated hosting output; rebuild from source.
+/dist/
+/node_modules/
+/coverage/
+*.log
+# Original nested repository, previous bundle, and local tool metadata.
+/archive/
+/.openai/
+/.codex/
+/.agents/
+# Local environment settings and operating-system files.
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+Desktop.ini
+# Personal quiz exports belong outside the shared repository.
+xm-cloud-results-*.json
+xm-cloud-history*.json
+xm-cloud-attempt.json

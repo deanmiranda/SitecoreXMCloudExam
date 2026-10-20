@@ -1,5 +1,7 @@
 // Deterministic checks for scoring and persistence; browser interactions are tested separately.
-const fs = require('fs'), vm = require('vm'), assert = require('assert/strict');
+const fs = require('node:fs'), vm = require('node:vm'), assert = require('node:assert/strict'), path = require('node:path');
+const ROOT = path.resolve(__dirname, '..');
+const read = (file, encoding) => fs.readFileSync(path.join(ROOT, file), encoding);
 const elements = new Map();
 function element(key) {
  if (!elements.has(key)) elements.set(key, {innerHTML:'',textContent:'',value:'',open:false,classList:{toggle(){}},focus(){},close(){this.open=false}});
@@ -12,8 +14,8 @@ const context=vm.createContext({
  localStorage:{getItem:k=>memory.get(k)||null,setItem:(k,v)=>memory.set(k,v)},
  window:{scrollTo(){}},setInterval(){},setTimeout(){},assert
 });
-const app=fs.readFileSync('app.js','utf8')+'\n'+fs.readFileSync('study-features.js','utf8').replace('if(!expire())renderSetup();','');
-vm.runInContext(fs.readFileSync('bank.js','utf8')+'\n'+fs.readFileSync('advanced-bank.js','utf8')+'\n'+fs.readFileSync('exam-bank.js','utf8')+'\n'+app,context);
+const app=read('src/exam/app.js','utf8')+'\n'+read('src/exam/study-features.js','utf8').replace('if(!expire())renderSetup();','');
+vm.runInContext(read('src/exam/bank.js','utf8')+'\n'+read('src/exam/advanced-bank.js','utf8')+'\n'+read('src/exam/exam-bank.js','utf8')+'\n'+app,context);
 vm.runInContext(`
 assert.equal(BANK.length,86);
 assert.equal(new Set(BANK.map(q=>q.id)).size,86);
@@ -135,12 +137,17 @@ assert.equal(storageOK,false);
 assert.equal(session.ids.length,1);
 console.log('PASS: 86-question integrity, filters, shuffled answer mapping, exact multi-select scoring, draft handling, saved-session validation, history deduplication, retakes, all-correct score, expiry, and unavailable-storage fallback.');
 `,context);
-const html=fs.readFileSync('XM-Cloud-Practice-Exam.html','utf8');
+const html=read('dist/index.html','utf8');
 assert.ok(!html.includes('BANK_PLACEHOLDER'));
 assert.ok(!html.includes('APP_PLACEHOLDER'));
 assert.equal((html.match(/<script>/g)||[]).length,2);
 assert.ok(!/<script[^>]+src=/.test(html));
 assert.ok(!/<link[^>]+stylesheet/.test(html));
+assert.ok(!html.includes('__LAB_URL__'));
+const offlineExam = read('XM-Cloud-Practice-Exam.html','utf8');
+assert.match(offlineExam,/href="\.\/GraphQL-Lab\.html">GraphQL game — additional query practice/);
+const offlineLab = read('GraphQL-Lab.html','utf8');
+assert.ok(!/<script[^>]+src=/.test(offlineLab));
 console.log('PASS: standalone output embeds both scripts and has no external runtime dependencies.');
 
 // A persisted v1 answer must still refer to its original option, even after a bank update.
@@ -153,7 +160,7 @@ const legacyContext=vm.createContext({
  }):null,setItem(){}},
  window:{scrollTo(){}},setInterval(){},setTimeout(){},assert
 });
-vm.runInContext(fs.readFileSync('bank.js','utf8')+'\n'+fs.readFileSync('advanced-bank.js','utf8')+'\n'+fs.readFileSync('exam-bank.js','utf8')+'\n'+app,legacyContext);
+vm.runInContext(read('src/exam/bank.js','utf8')+'\n'+read('src/exam/advanced-bank.js','utf8')+'\n'+read('src/exam/exam-bank.js','utf8')+'\n'+app,legacyContext);
 vm.runInContext(`
 assert.equal(session.bankRevision,1);
 assert.equal(byId.G28.options[1],'The client must inspect errors as well as data');
@@ -173,7 +180,7 @@ const recoveredCurrent={version:1,uid:'old-finished',bankRevision:2,ids:['G28','
 const recoveredHistory=[{uid:'old-finished',at:2000,label:'Earlier quiz',correct:1,total:2,percent:50},{uid:'summary-only',at:1500,label:'Old summary',correct:4,total:5,percent:80}];
 const migrationMemory=new Map([['xm-cloud-practice-v1',JSON.stringify(recoveredCurrent)],['xm-cloud-practice-v1-history',JSON.stringify(recoveredHistory)]]);
 const migrationContext=vm.createContext({console,Date,Math,JSON,Object,Array,String,Number,Set,Blob,URL,innerWidth:1200,document:{querySelector:element,querySelectorAll:()=>[]},localStorage:{getItem:k=>migrationMemory.get(k)||null,setItem:(k,v)=>migrationMemory.set(k,v)},window:{scrollTo(){}},setInterval(){},setTimeout(){},assert});
-vm.runInContext(fs.readFileSync('bank.js','utf8')+'\n'+fs.readFileSync('advanced-bank.js','utf8')+'\n'+fs.readFileSync('exam-bank.js','utf8')+'\n'+app,migrationContext);
+vm.runInContext(read('src/exam/bank.js','utf8')+'\n'+read('src/exam/advanced-bank.js','utf8')+'\n'+read('src/exam/exam-bank.js','utf8')+'\n'+app,migrationContext);
 vm.runInContext(`
 assert.equal(history.length,2);
 assert.ok(history.find(h=>h.uid==='old-finished').attempt);

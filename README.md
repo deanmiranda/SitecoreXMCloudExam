@@ -1,39 +1,69 @@
-# XM Cloud Developer Practice Studio
+# XM Cloud Practice Studio
 
-Open **XM-Cloud-Practice-Exam.html** in Edge, Chrome, or Firefox. The entire exam is inside that single file; it does not need installation, a server, or an internet connection. Documentation links need internet access.
+An independent study website for Sitecore XM Cloud developers, combining a weighted practice exam, a GraphQL primer, quiz history, and a query-building game.
 
-- The default **weighted mock** contains 50 questions, following the supplied screenshot: architecture 6, deployment 8, renderings/layouts 7, serialization 7, APIs/webhooks 5, Pages 5, security 5, data modeling 7. Its default timer is 100 minutes; you can choose untimed practice.
-- The separate **GraphQL drill** contains 36 questions. The entire learning bank contains 86 questions. GraphQL is not an extra weighted competency in the mock.
-- **GraphQL primer** in the header provides line-by-line query explanations, a worked response, types/defaults/fragments/directives, filtering/pagination, troubleshooting, a searchable glossary, and six ungraded self-checks. You can open it from inside a quiz and resume; an active timer continues.
-- Select all topics, GraphQL, foundations, or one individual topic.
-- Choose the entire selected bank or a random subset of up to 10, 20, or 50 questions.
-- Select an answer and click **Check answer** to reveal the correct answer, explanation, and reference.
-- Final results include a percentage, topic breakdown, and full answer review.
-- Retake the same questions with shuffled order, or drill only missed/unanswered questions. Full attempts snapshot their question definitions, so later edits cannot reinterpret their answers.
-- The question grid shows green ✓ for correct, red × for incorrect, and white for unanswered. Gold dots mark flagged questions.
-- New sessions use the revised challenge bank with closer distractors and scenario-based reasoning. Saved original attempts retain their original questions and answers; an exact retake uses those saved definitions.
-- Optional time limits continue while the page is closed. Retake buttons start untimed sessions; choose a new session to configure a new timer.
-- **Quiz history** retains completed attempts with selected choices, correct choices, explanations, and code. Review all answers or just missed/unanswered questions, retake an old quiz, and compare scores on the same question set. Weighted mocks also have a chronological score trend.
-- There is no ten-attempt cutoff for new history. Records remain subject to the browser's storage capacity. Use **Download history backup** and **Restore backup** to keep a portable copy. Older score summaries remain, but their missing answer details cannot be reconstructed. A completed attempt still in the current saved slot is upgraded to a full record.
-- Progress and history are stored in the current browser when local storage is available. Different browsers, copies of the file, or file-versus-preview URLs may have separate storage. Clearing browser storage removes progress. If storage is blocked or full, the exam displays a warning and remains usable for the session.
-- **Download results** saves a JSON report containing answers, explanations, and references.
+## Run locally
 
-This is independent practice material, not official exam content or a confirmed current certification blueprint. The 80% target is a practice setting. The provided 2023 community guide informed coverage; technical explanations link to Sitecore and GraphQL documentation. Newer Sitecore documentation uses SitecoreAI terminology. Example IDs, paths, site names, and template names must be replaced for a real environment.
+Install Node.js 22 or newer, then run these commands from the project folder:
 
-## Source files
+```sh
+npm ci
+npm start
+```
 
-The HTML file is all you need to take the exam. The other files are included for maintenance:
+Open **http://127.0.0.1:3000**. On the main page, choose **GraphQL game — additional query practice** to open the hands-on query builder at `/lab/`.
 
-- `bank.js`: questions and source links.
-- `advanced-bank.js`: revised questions; the original bank is retained for saved-attempt compatibility.
-- `exam-bank.js`: additional competency questions and the supplied weighted blueprint.
-- `app.js`: exam behavior.
-- `study-features.js`: primer, full attempt archive, history review, exact retakes, comparison, backup/restore.
-- `study-styles.css`: styles embedded into the finished HTML during the build.
-- `exam-template.html`: layout and styling.
-- `build.js`: embeds everything into the standalone HTML.
-- `verify.js`: scoring, state, and question-bank checks.
+`npm ci` installs the pinned GraphQL engine and esbuild browser bundler. `npm start` builds the site before starting the local preview server. The built site runs offline without a CDN or API connection.
 
-To regenerate after editing: `node build.js`
+For a double-click version, open [XM-Cloud-Practice-Exam.html](XM-Cloud-Practice-Exam.html). Its game link opens [GraphQL-Lab.html](GraphQL-Lab.html). Both are generated convenience copies; edit the source files rather than these HTML copies.
 
-To run checks: `node verify.js`
+## Project layout
+
+```text
+src/
+  exam/                 Question banks, exam, primer, history, styles
+  lab/                  GraphQL query-building game and lessons
+scripts/
+  build.cjs             Builds the site and standalone copies
+  serve.cjs             Serves only the generated website
+tests/                  Exam, game, and HTTP checks
+docs/
+  development.md        Source and Git workflow
+  hosting.md            Publish at a URL
+  user-guide.md         Practice modes and saved progress
+  images/               UI previews
+dist/                   Generated website (ignored by Git)
+archive/                Original local artifacts (ignored by Git)
+package.json            Build, test, and preview commands
+package-lock.json       Reproducible package metadata
+```
+
+## Build, test, and deploy
+
+```sh
+npm run build
+npm test
+```
+
+Publish the **contents of `dist/`** to a static web host:
+
+- `dist/index.html` → the main practice site.
+- `dist/lab/` → the GraphQL game and its assets.
+
+A host with build settings should use `npm run build` and publish directory `dist`. The hosted page needs no Node process or database. See [hosting instructions](docs/hosting.md) for URL paths and progress migration.
+
+## Study features
+
+- **Weighted mock:** 50 questions with the supplied competency split of **6 / 8 / 7 / 7 / 5 / 5 / 5 / 7**; default 100-minute timer, optional untimed mode.
+- **GraphQL drill:** 36 additional interpretation questions, separate from the exam weights.
+- **Primer:** explained query anatomy, worked responses, searchable terminology, and self-checks.
+- **Quiz history:** full answer reviews, exact retakes, missed-question practice, score comparisons, and JSON backup/restore.
+- **GraphQL game:** 18 hands-on query-building challenges, linked from the main page.
+
+Progress is saved in each visitor's browser, not on a shared server. Moving from a local file to a hosted URL creates a different storage area; export quiz history from the old page and restore it on the new URL. Game progress has its own local storage. See the [user guide](docs/user-guide.md).
+
+## Contribute and share
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Git workflow](docs/development.md#git-workflow). The existing Git repository has been preserved. The original nested game repository is retained locally under ignored `archive/`; the shareable source is included directly in `src/lab/`.
+
+This project uses original study material and is not an official certification exam or a guarantee of exam performance. Competency weights follow the supplied study screenshot. Documentation links and optional game fonts require internet access.
