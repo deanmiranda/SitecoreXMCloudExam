@@ -191,4 +191,20 @@ assert.equal(session.bankRevision,2);
 console.log('PASS: completed current quiz upgrades its matching summary without losing answers; unavailable older answer details remain explicitly summary-only.');
 `,migrationContext);
 console.log('PASS: 50-question 6/8/7/7/5/5/5/7 blueprint; 36-question separate drill; complete history, exact retakes, score comparisons, immutable prior answers, backup validation/deduplication, and retention beyond ten attempts.');
+vm.runInContext(`
+{
+ const originalShuffle=shuffle;
+ try {
+  for(const reverse of [false,true]){
+   shuffle=input=>reverse?[...input].reverse():[...input];
+   renderPrimer();
+   const buttons=[...main.innerHTML.matchAll(/data-check="0" data-choice="([01])">([^<]+)/g)];
+   assert.deepEqual(buttons.map(m=>m[1]),reverse?['1','0']:['0','1']);
+   assert.equal(buttons.find(m=>m[1]==='0')[2],'caption');
+   assert.equal((main.innerHTML.match(/data-check="[0-5]" data-choice=/g)||[]).length,12);
+  }
+ } finally {shuffle=originalShuffle;}
+}
+`,context);
+console.log('PASS: primer choices can appear in either order while retaining their correct-answer identity.');
 

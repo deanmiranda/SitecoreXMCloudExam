@@ -5,6 +5,17 @@
 .tok-builtin{color:#d1baf3}.tok-api{color:#ffd195}
 .graphql-map{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;list-style:none;padding:0}
 .graphql-map li{padding:18px;background:#edf5f7;border:1px solid #c8dce4;border-radius:12px}
+.foundation-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0}
+.foundation-cards article{padding:20px;background:#f5f8fa;border:1px solid #dce4e9;border-radius:14px}
+.foundation-cards h4{font-size:1.15rem;margin:8px 0}
+.foundation-cards p,.graphql-map p{margin:8px 0 0}
+.foundation-detail{border:1px solid #dce4e9;border-radius:12px;padding:16px 20px;margin:20px 0}
+.foundation-detail summary{font-weight:700;cursor:pointer}
+.sitecore-flow{display:flex;align-items:center;gap:14px;background:#162e3e;color:#fff;padding:22px;border-radius:14px}
+.sitecore-flow span{flex:1;text-align:center}
+.sitecore-flow b{color:#f6ad88;font-size:1.4rem}
+@media(max-width:1000px){.foundation-cards{grid-template-columns:1fr 1fr}.sitecore-flow{flex-direction:column;align-items:stretch}.sitecore-flow b{text-align:center;transform:rotate(90deg)}}
+@media(max-width:600px){.foundation-cards{grid-template-columns:1fr}}
 .worked-triplet{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .worked-triplet>div{min-width:0}
 @media(max-width:1000px){.graphql-map,.worked-triplet{grid-template-columns:1fr}}
