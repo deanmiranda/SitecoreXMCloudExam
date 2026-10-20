@@ -52,6 +52,14 @@ Publish the **contents of `dist/`** to a static web host:
 
 A host with build settings should use `npm run build` and publish directory `dist`. The hosted page needs no Node process or database. See [hosting instructions](docs/hosting.md) for URL paths and progress migration.
 
+## GraphQL Playground:
+
+<img width="3842" height="6419" alt="GraphQlPlayGround" src="https://github.com/user-attachments/assets/a6625d29-7569-4e2e-8728-bd57c74d6ea8" />
+
+## Sitecore Exam Practice:
+
+<img width="3842" height="3986" alt="SiteCoreExamPractice" src="https://github.com/user-attachments/assets/607334d0-2a12-4d4e-a09e-f15a57b3dbba" />
+
 ## Study features
 
 - **Weighted mock:** 50 questions with the supplied competency split of **6 / 8 / 7 / 7 / 5 / 5 / 5 / 7**; default 100-minute timer, optional untimed mode.
